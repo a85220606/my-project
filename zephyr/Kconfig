@@ -1,0 +1,19 @@
+config CA_OMCI
+    bool "Build CA OMCI Module"
+    default n
+    help
+      To build ca omci module
+
+config CA_OMCI_FPGA
+    bool "CA OMCI FPGA"
+    default n
+    depends on CA_OMCI
+    help
+      A option to integrate FPGA code
+
+config CA_OMCI_SUPPORT_OTP
+    bool "CA OMCI SUPPORT OTP"
+    default n
+    depends on CA_OMCI
+    help
+      A option to integrate OTP INFO code

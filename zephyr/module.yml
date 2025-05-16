@@ -1,0 +1,6 @@
+name: ca-omci
+build:
+          cmake: .
+          kconfig: zephyr/Kconfig
+          depends:
+            - ca-scfg

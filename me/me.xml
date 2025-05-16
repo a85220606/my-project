@@ -1,0 +1,2241 @@
+<Root>
+<me mename="onu_data"             meDescr="onuData"           classid="2"     multipkt="0" action="get,set,GetAllAlarms,GetAllAlarmsNext,MibReset,MibUpload,mibUploadNext">
+  <attr attrName="mib_data_sync" attrDescr="mibDataSync" attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+</me>
+<me mename="cardholder"           meDescr="cardholder"        classid="5"     multipkt="1" action="get,set,alarmReport">
+  <attr attrName="actual_unit_type"      attrDescr="actualUnitType"      attrAction="RV"  attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="expect_unit_type"      attrDescr="exceptUnitType"      attrAction="RW"  attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="expect_port_num"       attrDescr="exceptPortNum"       attrAction="RW"  attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="expect_eq_id"          attrDescr="expectEqId"          attrAction="RW"  attrDataType="ca_omci_uint8_t" attrSize="OMCI_EQID_LEN"/>
+  <attr attrName="actual_eq_id"          attrDescr="actualEqId"          attrAction="RV"  attrDataType="ca_omci_uint8_t" attrSize="OMCI_EQID_LEN"/>
+  <attr attrName="protec_prof_point"     attrDescr="protecProfPoint"     attrAction="R"   attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="invoke_protect_switch" attrDescr="invokeProtectSwitch" attrAction="RW"  attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="arc"                   attrDescr="arc"                 attrAction="RWV" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="arc_interval"          attrDescr="arcInterval"         attrAction="RW"  attrDataType="ca_omci_uint8_t" attrSize="0"/>
+    <enum enumName="unit_type">
+        <element name="no_lim"               value="0"/>
+        <element name="atm_015"              value="1"/>
+        <element name="atm_020"              value="2"/>
+        <element name="atm_063"              value="3"/>
+        <element name="atm_063_u"            value="4"/>
+        <element name="atm_080"              value="5"/>
+        <element name="atm_250"              value="6"/>
+        <element name="atm_340"              value="7"/>
+        <element name="atm_450"              value="8"/>
+        <element name="atm_450_340"          value="9"/>
+        <element name="atm_stm1_smf"         value="10"/>
+        <element name="atm_stm1_mmf"         value="11"/>
+        <element name="atm_stm1_utp"         value="12"/>
+        <element name="cbr_ds1"              value="13"/>
+        <element name="cbr_e1"               value="14"/>
+        <element name="cbr_j2"               value="15"/>
+        <element name="cbr_ds1_e1"           value="16"/>
+        <element name="cbr_ds1_e1_j1"        value="17"/>
+        <element name="cbr_j2_u"             value="18"/>
+        <element name="cbr_192k"             value="19"/>
+        <element name="cbr_ds3"              value="20"/>
+        <element name="cbr_e3"               value="21"/>
+        <element name="10_bt"                value="22"/>
+        <element name="100_bt"               value="23"/>
+        <element name="10_100_bt"            value="24"/>
+        <element name="token_ring"           value="25"/>
+        <element name="fddi"                 value="26"/>
+        <element name="frame_relay"          value="27"/>
+        <element name="cbr_j1"               value="28"/>
+        <element name="atm_oc3_smf"          value="29"/>
+        <element name="atm_oc3_mmf"          value="30"/>
+        <element name="atm_oc3_utp"          value="31"/>
+        <element name="pots"                 value="32"/>
+        <element name="isdn_bri"             value="33"/>
+        <element name="gb_eth"               value="34"/>
+        <element name="xdsl"                 value="35"/>
+        <element name="shdsl"                value="36"/>
+        <element name="vdsl"                 value="37"/>
+        <element name="video"                value="38"/>
+        <element name="lct"                  value="39"/>
+        <element name="802_11"               value="40"/>
+        <element name="xdsl_pots"            value="41"/>
+        <element name="vdsl_pots"            value="42"/>
+        <element name="com_equip"            value="43"/>
+        <element name="comb_vedio_uni_pon"   value="44"/>
+        <element name="mix_svc_eqp"          value="45"/>
+        <element name="moca"                 value="46"/>
+        <element name="10_100_1000_bt"       value="47"/>
+        <element name="veip"                 value="48"/>
+        <element name="10g_eth"              value="49"/>
+        <element name="2g5_eth"              value="50"/>
+        <element name="5g_eth"               value="51"/>
+        <element name="25g_eth"              value="52"/>
+        <element name="40g_eth"              value="53"/>
+        <element name="1000base_lx"          value="54"/>
+        <element name="1000base_sx"          value="55"/>
+        <element name="10g_sr"               value="56"/>
+        <element name="10g_lx4"              value="57"/>
+        <element name="10g_lrm"              value="58"/>
+        <element name="10g_lr"               value="59"/>
+        <element name="10g_er"               value="60"/>
+        <element name="10g_sw"               value="61"/>
+        <element name="10g_lw"               value="62"/>
+        <element name="10g_ew"               value="63"/>
+        <element name="25g_sr"               value="64"/>
+        <element name="40g_sr4"              value="65"/>
+        <element name="40g_lr4"              value="66"/>
+        <element name="40g_er4"              value="67"/>
+        <element name="10g_multi_rate"       value="68"/>
+        <element name="10g_optical"          value="69"/>
+        <element name="40g_optical"          value="70"/>
+        <element name="gfast"                value="71"/>
+        <element name="25g_optical"          value="72"/>
+        <element name="50g_optical"          value="73"/>
+        <element name="25g_lr"               value="74"/>
+        <element name="25g_er"               value="75"/>
+        <element name="50g_sr"               value="76"/>
+        <element name="50g_fr"               value="77"/>
+        <element name="50g_lr"               value="78"/>
+        <element name="50g_er"               value="79"/>
+        <element name="10g_br10"             value="80"/>
+        <element name="10g_br20"             value="81"/>
+        <element name="10g_br40"             value="82"/>
+        <element name="25g_br10"             value="83"/>
+        <element name="25g_br20"             value="84"/>
+        <element name="25g_br40"             value="85"/>
+        <element name="50g_br10"             value="86"/>
+        <element name="50g_br20"             value="87"/>
+        <element name="50g_br40"             value="88"/>
+        <element name="25gpon_25g_10"        value="222"/>
+        <element name="25gpon_25g_25"        value="223"/>
+        <element name="hsp50g50"             value="227"/>
+        <element name="hsp50g25"             value="228"/>
+        <element name="hsp50g12"             value="229"/>
+        <element name="multi_pon"            value="230"/>
+        <element name="ptp_wdm_pon_cls1"     value="231"/>
+        <element name="ptp_wdm_pon_cls2"     value="232"/>
+        <element name="ptp_wdm_pon_cls3"     value="233"/>
+        <element name="twmp10g2"             value="234"/>
+        <element name="twdm10g10"            value="235"/>
+        <element name="twdm2g2"              value="236"/>
+        <element name="xgpon_10g_2488"       value="237"/>
+        <element name="xgpon_10g_10"         value="238"/>
+        <element name="mids_pon_ext_uni"     value="239"/>
+        <element name="mids_pon_ext_ani"     value="240"/>
+        <element name="mids_pon_ext_us_opt"  value="241"/>
+        <element name="mids_pon_2488_ds_opt" value="242"/>
+        <element name="gpon_asym_1244_155"   value="243"/>
+        <element name="gpon_asym_1244_622"   value="244"/>
+        <element name="pon_sym_1244"         value="245"/>
+        <element name="gpon_asym_2488_155"   value="246"/>
+        <element name="gpon_asym_2488_622"   value="247"/>
+        <element name="gpon_asym_2488_1244"  value="248"/>
+        <element name="pon_sym_2488"         value="249"/>
+        <element name="pon_asym_1244_155"    value="250"/>
+        <element name="pon_asym_1244_622"    value="251"/>
+        <element name="pon_sym_622"          value="252"/>
+        <element name="pon_sym_155"          value="253"/>
+        <element name="pon_asym_155_622"     value="254"/>
+        <element name="pnp"                  value="255"/>
+    </enum>
+</me>
+<me mename="circuit_pack"         meDescr="circuitPack"       classid="6"     multipkt="1" action="get,set,create,delete,reboot,test">
+  <attr attrName="type"                attrDescr="type"                attrAction="RS"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="port_num"            attrDescr="portNum"             attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="sn"                  attrDescr="sn"                  attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="OMCI_SN_LEN"/>
+  <attr attrName="version"             attrDescr="version"             attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="OMCI_VERSION_LEN"/>
+  <attr attrName="vendor_id"           attrDescr="vendorId"            attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="OMCI_VENDOR_ID_LEN"/>
+  <attr attrName="admin"               attrDescr="admin"               attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="oper_state"          attrDescr="operState"           attrAction="RV"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="brg_ip_ind"          attrDescr="brdIpInd"            attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="eq_id"               attrDescr="eqId"                attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="OMCI_EQID_LEN"/>
+  <attr attrName="card_cfg"            attrDescr="cardCfg"             attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="tcont_buf_num"       attrDescr="tcontBufNum"         attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="pri_queue_num"       attrDescr="priQueueNUm"         attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="traf_sched_num"      attrDescr="trafficSchedulerNum" attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="power_shed_override" attrDescr="powerShedOverride"   attrAction="RW"  attrDataType="ca_omci_uint32_t" attrSize="0"/>
+    <enum enumName="brg_ip_ind">
+        <element name="brg"  value="0"/>
+        <element name="ip"   value="1"/>
+        <element name="both" value="2"/>
+    </enum>
+</me>
+<me mename="soft_image"           meDescr="softImage"         classid="7"     multipkt="1" action="get,startDownload,downloadSection,endDownload,activateImage,commitImage">
+  <attr attrName="version"      attrDescr="version"     attrAction="RV"  attrDataType="ca_omci_uint8_t" attrSize="OMCI_VERSION_LEN"/>
+  <attr attrName="is_commit"    attrDescr="isCommit"    attrAction="RV"  attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="is_active"    attrDescr="isActive"    attrAction="RV"  attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="is_valid"     attrDescr="isValid"     attrAction="RV"  attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="product_code" attrDescr="productCode" attrAction="RV"  attrDataType="ca_omci_uint8_t" attrSize="OMCI_PRODUCT_CODE_LEN"/>
+  <attr attrName="image_hash"   attrDescr="imageHash"   attrAction="RV"  attrDataType="ca_omci_uint8_t" attrSize="OMCI_IMAGE_HASH_LEN"/>
+</me>
+<me mename="pptp_eth"             meDescr="pptpEth"           classid="11"    multipkt="0" action="get,set,alarmReport">
+  <attr attrName="expect_type"      attrDescr="expectType"     attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="sensed_type"      attrDescr="sensedType"     attrAction="RV"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="auto_detec_cfg"   attrDescr="autoDetectCfg"  attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="eth_loopback_cfg" attrDescr="ethLoopbackCfg" attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="admin"            attrDescr="admin"          attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="oper_state"       attrDescr="operState"      attrAction="RV"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="cfg_ind"          attrDescr="cfgInd"         attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="max_frame_size"   attrDescr="maxFrameSize"   attrAction="RW"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="dte_dce_ind"      attrDescr="dteDceInd"      attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="pause_time"       attrDescr="pauseTime"      attrAction="RW"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="brg_ip_ind"       attrDescr="brgIpInd"       attrAction="RW"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="arc"              attrDescr="arc"            attrAction="RWV" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="arc_interval"     attrDescr="arcInterval"    attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="pppoe_filter"     attrDescr="pppoeFilter"    attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="power_control"    attrDescr="powerCtrl"      attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+    <enum enumName="auto_detec_cfg">
+        <element name="auto_auto"       value="0x00"/>
+        <element name="10m_only_full"   value="0x01"/>
+        <element name="100m_only_full"  value="0x02"/>
+        <element name="1000m_only_full" value="0x03"/>
+        <element name="auto_full"       value="0x04"/>
+        <element name="10g_only_full"   value="0x05"/>
+        <element name="2g5_only_full"   value="0x06"/>
+        <element name="5g_only_full"    value="0x07"/>
+        <element name="25g_only_full"   value="0x08"/>
+        <element name="40g_only_full"   value="0x09"/>
+        <element name="10m_only_auto"   value="0x10"/>
+        <element name="10m_only_half"   value="0x11"/>
+        <element name="100m_only_half"  value="0x12"/>
+        <element name="1000m_only_half" value="0x13"/>
+        <element name="auto_half"       value="0x14"/>
+        <element name="1000m_only_auto" value="0x20"/>
+        <element name="100m_only_auto"  value="0x30"/>
+    </enum>
+    <enum enumName="cfg_ind">
+        <element name="10base_t_full"  value="0x01"/>
+        <element name="100base_t_full" value="0x02"/>
+        <element name="ge_full"        value="0x03"/>
+        <element name="10g_eth_full"   value="0x04"/>
+        <element name="2g5_eth_full"   value="0x05"/>
+        <element name="5g_eth_full"    value="0x06"/>
+        <element name="25g_eth_full"   value="0x07"/>
+        <element name="40g_eth_full"   value="0x08"/>
+        <element name="10base_t_half"  value="0x11"/>
+        <element name="100base_t_half" value="0x12"/>
+        <element name="ge_half"        value="0x13"/>
+    </enum>
+    <enum enumName="dte_dce_ind">
+        <element name="dce_mdi_x"   value="0"/>
+        <element name="dte_mdi"     value="1"/>
+        <element name="auto_select" value="2"/>
+    </enum>
+</me>
+<me mename="eth_pm_his"           meDescr="ethPmHis"          classid="24"    multipkt="0" action="create,delete,get,set,GetCurrData">
+  <attr attrName="interval_end_time"       attrDescr="intervalEndT"        attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="thres_id"                attrDescr="thresId"             attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="fcs_err"                 attrDescr="fcsErr"              attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="excess_coll_cnt"         attrDescr="excessCollCnt"       attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="late_coll_cnt"           attrDescr="lateCollCnt"         attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="frame_too_long"          attrDescr="frameTooLong"        attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_buff_overflow"        attrDescr="rxBuffOverflow"      attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="tx_buff_overflow"        attrDescr="txBuffOverflow"      attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="single_coll_frame_cnt"   attrDescr="singleCollFrameCnt"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="multi_coll_frame_cnt"    attrDescr="multiCollFrameCnt"   attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="sqe_cnt"                 attrDescr="sqeCnt"              attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="deferred_tx_cnt"         attrDescr="deferredTxCnt"       attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="internal_mac_tx_err_cnt" attrDescr="internalMacTxErrCnt" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="carrier_sense_err_cnt"   attrDescr="carrierSenseErrCnt"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="align_err_cnt"           attrDescr="alignErrCnt"         attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="internal_mac_rx_err_cnt" attrDescr="internalMacRxErrCnt" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+</me>
+<me mename="mac_brg_srv"          meDescr="macBrgSrv"         classid="45"    multipkt="0" action="create,delete,get,set">
+  <attr attrName="span_tree_ind"           attrDescr="spanningTreeInd"      attrAction="RWS"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="learning_ind"            attrDescr="learningInd"          attrAction="RWS"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="port_brg_ind"            attrDescr="portBrgInd"           attrAction="RWS"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="priority"                attrDescr="priority"             attrAction="RWS"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="max_age"                 attrDescr="maxAge"               attrAction="RWS"   attrDataType="ca_omci_uint16_t" attrSize="0" attrMinValue="0x0600" attrMaxValue="0x2800"/>
+  <attr attrName="hello_time"              attrDescr="helloTime"            attrAction="RWS"   attrDataType="ca_omci_uint16_t" attrSize="0" attrMinValue="0x0100" attrMaxValue="0x0a00"/>
+  <attr attrName="forward_delay"           attrDescr="forwardDelay"         attrAction="RWS"   attrDataType="ca_omci_uint16_t" attrSize="0" attrMinValue="0x0400" attrMaxValue="0x1e00"/>
+  <attr attrName="unknow_mac_addr_discard" attrDescr="unknowMacAddrDiscard" attrAction="RWS"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="mac_learn_depth"         attrDescr="macLearnDepth"        attrAction="RWS"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="dynamic_filter_age_time" attrDescr="dynamicFilterAgeTime" attrAction="RWS"   attrDataType="ca_omci_uint32_t" attrSize="0" attrMinValue="10" attrMaxValue="1000000"/>
+</me>
+<me mename="mac_brg_cfg"          meDescr="macBrgCfg"         classid="46"    multipkt="1" action="get">
+  <attr attrName="brg_mac_addr"    attrDescr="brgMacAddr"     attrAction="R" attrDataType="ca_omci_uint8_t"  attrSize="OMCI_MAC_ADDR_LEN"/>
+  <attr attrName="brg_priority"    attrDescr="brgPriority"    attrAction="R" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="designated_root" attrDescr="designatedRoot" attrAction="R" attrDataType="ca_omci_uint8_t"  attrSize="8"/>
+  <attr attrName="root_path_cost"  attrDescr="rootPathCost"   attrAction="R" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="brg_port_cnt"    attrDescr="brgPortCnt"     attrAction="R" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="root_port_num"   attrDescr="rootPortNum"    attrAction="R" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="hello_time"      attrDescr="helloTime"      attrAction="R" attrDataType="ca_omci_uint16_t" attrSize="0" attrMinValue="0x0100" attrMaxValue="0x0a00"/>
+  <attr attrName="forward_delay"   attrDescr="forwardDelay"   attrAction="R" attrDataType="ca_omci_uint16_t" attrSize="0" attrMinValue="0x0400" attrMaxValue="0x1e00"/>
+</me>
+<me mename="mac_port_cfg"         meDescr="macPortCfg"        classid="47"    multipkt="0" action="create,delete,get,set,alarmReport">
+  <attr attrName="brg_id_pointer"     attrDescr="brgIdPointer"        attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="port_num"           attrDescr="portNum"             attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="tp_type"            attrDescr="tpType"              attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="tp_pointer"         attrDescr="tpPointer"           attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="port_priority"      attrDescr="portPriority"        attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0" attrMinValue="0" attrMaxValue="255"/>
+  <attr attrName="port_path_cost"     attrDescr="portPathCost"        attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0" attrMinValue="1" attrMaxValue="65535"/>
+  <attr attrName="port_span_tree_ind" attrDescr="portSpanningTreeInd" attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="deprecated1"        attrDescr="deprecated1"         attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="deprecated2"        attrDescr="deprecated2"         attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="port_mac_addr"      attrDescr="portMacAddr"         attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="OMCI_MAC_ADDR_LEN"/>
+  <attr attrName="outbound_td_point"  attrDescr="outboundTdPoint"     attrAction="RW"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="inbound_td_point"   attrDescr="inboundTdPoint"      attrAction="RW"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="mac_learn_depth"    attrDescr="macLearnDepth"       attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+    <enum enumName="tp_type">
+        <element name="pptp_eth"  value="1"/>
+        <element name="vcc"       value="2"/>
+        <element name="dot1p_srv" value="3"/>
+        <element name="iphost"    value="4"/>
+        <element name="gem_iwtp"  value="5"/>
+        <element name="multi_gem" value="6"/>
+        <element name="xdsl"      value="7"/>
+        <element name="vdsl"      value="8"/>
+        <element name="eth_flow"  value="9"/>
+        <element name="reserved"  value="10"/>
+        <element name="veip"      value="11"/>
+        <element name="moca"      value="12"/>
+    </enum>
+</me>
+<me mename="mac_port_des"         meDescr="macPortDes"        classid="48"    multipkt="0" action="get">
+  <attr attrName="designate"  attrDescr="desigBrgRootCostPort" attrAction="R"   attrDataType="ca_omci_uint8_t" attrSize="24"/>
+  <attr attrName="port_state" attrDescr="portState"            attrAction="R"   attrDataType="ca_omci_uint8_t" attrSize="0"/>
+    <enum enumName="port_state">
+        <element name="disable"  value="0"/>
+        <element name="listen"   value="1"/>
+        <element name="learn"    value="2"/>
+        <element name="forward"  value="3"/>
+        <element name="block"    value="4"/>
+        <element name="linkdown" value="5"/>
+        <element name="stp_off"  value="6"/>
+    </enum>
+</me>
+<me mename="mac_port_filter"      meDescr="macPortFilter"     classid="49"    multipkt="0" action="get,Getnext,set,tableSet">
+  <attr attrName="mac_filter_tbl"  attrDescr="macFilterTbl" attrAction="RWT" attrDataType="ca_omci_mac_filter_tbl_t" attrSize="16"/>
+    <table tableName="ca_omci_mac_filter_tbl_t">
+        <tableAttr name="index"   desc="index"    type="ca_omci_uint8_t"/>
+        <tableAttr name="filter"  desc="filter"   type="ca_omci_uint8_t"/>
+        <tableAttr name="macAddr" desc="mac_addr" type="ca_omci_uint8_t" size="OMCI_MAC_ADDR_LEN"/>
+    </table>
+</me>
+<me mename="mac_port_brg"         meDescr="macPortBrg"        classid="50"    multipkt="0" action="get,Getnext">
+  <attr attrName="brg_tbl"  attrDescr="brgTbl" attrAction="RT" attrDataType="ca_omci_brg_tbl_t" attrSize="64"/>
+    <table tableName="ca_omci_brg_tbl_t">
+        <tableAttr name="info"    desc="info"     type="ca_omci_uint16_t"/>
+        <tableAttr name="macAddr" desc="mac_addr" type="ca_omci_uint8_t" size="OMCI_MAC_ADDR_LEN"/>
+    </table>
+</me>
+<me mename="mac_brg_pm"           meDescr="macBrgPm"          classid="51"    multipkt="0" action="create,delete,get,set,GetCurrData">
+  <attr attrName="interval_end_time"     attrDescr="intervalEndT"       attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="thres_id"              attrDescr="thresId"            attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="brg_learn_discard_cnt" attrDescr="brgLearnDiscardCnt" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+</me>
+<me mename="mac_port_pm"          meDescr="macPortPm"         classid="52"    multipkt="0" action="create,delete,get,set,GetCurrData">
+  <attr attrName="interval_end_time"      attrDescr="intervalEndT"      attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="thres_id"               attrDescr="thresId"           attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="forward_frame_cnt"      attrDescr="forwardFrameCnt"   attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="delay_exce_discard_cnt" attrDescr="delayExceDiscard"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="mtu_exce_discard_cnt"   attrDescr="mtuExceDiscardCnt" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_frame_cnt"           attrDescr="rxFrameCnt"        attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_discard_cnt"         attrDescr="rxDiscardCnt"      attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+</me>
+<me mename="pptp_pots"            meDescr="pptpPots"          classid="53"    multipkt="0" action="get,set,test">
+  <attr attrName="admin"               attrDescr="admin"            attrAction="RWV" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="deprecated"          attrDescr="deprecated"       attrAction="RW"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="arc"                 attrDescr="arc"              attrAction="RWV" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="arc_interval"        attrDescr="arcInterval"      attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="impedance"           attrDescr="impedance"        attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="tx_path"             attrDescr="txPath"           attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="rx_gain"             attrDescr="rxGain"           attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="tx_gain"             attrDescr="txGain"           attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="oper_state"          attrDescr="operState"        attrAction="RV"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="hook_state"          attrDescr="hookState"        attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="pots_holdover_time"  attrDescr="potsHoldoverTime" attrAction="RW"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="nominal_feed_vol"    attrDescr="nominalFeedVol"   attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="loss_of_softswitch"  attrDescr="lossOfSoftswitch" attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+    <enum enumName="impedance">
+        <element name="600ohms"         value="0"/>
+        <element name="900ohms"         value="1"/>
+        <element name="c150_r750_r270"  value="2"/>
+        <element name="c115_r820_r220"  value="3"/>
+        <element name="c230_r1050_r320" value="4"/>
+    </enum>
+    <enum enumName="hook_state">
+        <element name="on"  value="0"/>
+        <element name="off" value="1"/>
+    </enum>
+</me>
+<me mename="voice_srv_prof"       meDescr="voiceSrvProf"      classid="58"    multipkt="0" action="create,delete,get,set,tableSet,alarmReport">
+  <attr attrName="announce_type"    attrDescr="announceType"   attrAction="RWS" attrDataType="ca_omci_uint8_t"              attrSize="0"/>
+  <attr attrName="jitter_target"    attrDescr="jitterTarget"   attrAction="RWS" attrDataType="ca_omci_uint16_t"             attrSize="0"/>
+  <attr attrName="max_jitter_buff"  attrDescr="maxJitterBuff"  attrAction="RWS" attrDataType="ca_omci_uint16_t"             attrSize="0"/>
+  <attr attrName="echo_cancel_ind"  attrDescr="echoCancelInd"  attrAction="RWS" attrDataType="ca_omci_uint8_t"              attrSize="0"/>
+  <attr attrName="pstn_prot_var"    attrDescr="pstnProtVar"    attrAction="RWS" attrDataType="ca_omci_uint16_t"             attrSize="0"/>
+  <attr attrName="dtmf_digit_lev"   attrDescr="dtmfDigitLev"   attrAction="RWS" attrDataType="ca_omci_uint16_t"             attrSize="0"/>
+  <attr attrName="dtmf_digit_dur"   attrDescr="dtmfDigitDur"   attrAction="RWS" attrDataType="ca_omci_uint16_t"             attrSize="0"/>
+  <attr attrName="min_hook_flash_t" attrDescr="minHookFlashT"  attrAction="RWS" attrDataType="ca_omci_uint16_t"             attrSize="0"/>
+  <attr attrName="max_hook_flash_t" attrDescr="maxHookFlashT"  attrAction="RWS" attrDataType="ca_omci_uint16_t"             attrSize="0"/>
+  <attr attrName="tone_pattern_tbl" attrDescr="tonePatternTbl" attrAction="RWT" attrDataType="ca_omci_tone_pattern_table_t" attrSize="20"/>
+  <attr attrName="tone_event_tbl"   attrDescr="toneEventTbl"   attrAction="RWT" attrDataType="ca_omci_tone_event_table_t"   attrSize="20"/>
+  <attr attrName="ring_pattern_tbl" attrDescr="ringPatternTbl" attrAction="RWT" attrDataType="ca_omci_ring_pattern_table_t" attrSize="20"/>
+  <attr attrName="ring_event_tbl"   attrDescr="ringEventTbl"   attrAction="RWT" attrDataType="ca_omci_ring_event_table_t"   attrSize="20"/>
+  <attr attrName="network_point"    attrDescr="networkPoint"   attrAction="RWS" attrDataType="ca_omci_uint16_t"             attrSize="0"/>
+    <enum enumName="announce_type">
+        <element name="silence"        value="0x01"/>
+        <element name="reorder_tone"   value="0x02"/>
+        <element name="fast_bust"      value="0x03"/>
+        <element name="voice_annonuce" value="0x04"/>
+        <element name="not_spec"       value="0xff"/>
+    </enum>
+    <enum enumName="tone_event">
+        <element name="busy"         value="1"/>
+        <element name="confirmation" value="2"/>
+        <element name="dial"         value="3"/>
+        <element name="msg_wait"     value="4"/>
+        <element name="offhook_warn" value="5"/>
+        <element name="ringback"     value="6"/>
+        <element name="reorder"      value="7"/>
+        <element name="stutter_dial" value="8"/>
+        <element name="call_wait_1"  value="9"/>
+        <element name="call_wait_2"  value="10"/>
+        <element name="call_wait_3"  value="11"/>
+        <element name="call_wait_4"  value="12"/>
+        <element name="alert_signal" value="13"/>
+        <element name="special_dial" value="14"/>
+        <element name="special_info" value="15"/>
+        <element name="release"      value="16"/>
+        <element name="congestion"   value="17"/>
+        <element name="user_def_1"   value="18"/>
+        <element name="user_def_2"   value="19"/>
+        <element name="user_def_3"   value="20"/>
+        <element name="user_def_4"   value="21"/>
+        <element name="intrusion"    value="33"/>
+        <element name="dead_tone"    value="34"/>
+    </enum>
+    <enum enumName="ring_event">
+        <element name="default" value="1"/>
+        <element name="Splash"  value="2"/>
+    </enum>
+    <table tableName="ca_omci_tone_pattern_table_t">
+        <tableAttr name="index"       desc="index"        type="ca_omci_uint8_t"/>
+        <tableAttr name="toneOn"      desc="tone_on"      type="ca_omci_uint8_t"/>
+        <tableAttr name="frequency1"  desc="frequency_1"  type="ca_omci_uint16_t"/>
+        <tableAttr name="power1"      desc="power_1"      type="ca_omci_uint8_t"/>
+        <tableAttr name="frequency2"  desc="frequency_1"  type="ca_omci_uint16_t"/>
+        <tableAttr name="power2"      desc="power_1"      type="ca_omci_uint8_t"/>
+        <tableAttr name="frequency3"  desc="frequency_1"  type="ca_omci_uint16_t"/>
+        <tableAttr name="power3"      desc="power_1"      type="ca_omci_uint8_t"/>
+        <tableAttr name="frequency4"  desc="frequency_1"  type="ca_omci_uint16_t"/>
+        <tableAttr name="power4"      desc="power_4"      type="ca_omci_uint8_t"/>
+        <tableAttr name="modulFreq"   desc="modul_freq"   type="ca_omci_uint16_t"/>
+        <tableAttr name="modulPower"  desc="modul_power"  type="ca_omci_uint8_t"/>
+        <tableAttr name="duration"    desc="duration"     type="ca_omci_uint16_t"/>
+        <tableAttr name="nextEntry"   desc="next_entry"   type="ca_omci_uint8_t"/>
+    </table>
+    <table tableName="ca_omci_tone_event_table_t">
+        <tableAttr name="event"       desc="event"         type="ca_omci_uint8_t"/>
+        <tableAttr name="tonePattern" desc="tone_pattern"  type="ca_omci_uint8_t"/>
+        <tableAttr name="toneFile"    desc="tone_file"     type="ca_omci_uint16_t"/>
+        <tableAttr name="toneFileRep" desc="tone_file_rep" type="ca_omci_uint8_t"/>
+        <tableAttr name="reserved"    desc="reserved"      type="ca_omci_uint16_t"/>
+    </table>
+    <table tableName="ca_omci_ring_pattern_table_t">
+        <tableAttr name="index"     desc="index"      type="ca_omci_uint8_t"/>
+        <tableAttr name="ringingOn" desc="ringing_on" type="ca_omci_uint8_t"/>
+        <tableAttr name="duration"  desc="duration"   type="ca_omci_uint16_t"/>
+        <tableAttr name="nextEntry" desc="next_entry" type="ca_omci_uint8_t"/>
+    </table>
+    <table tableName="ca_omci_ring_event_table_t">
+        <tableAttr name="event"       desc="event"         type="ca_omci_uint8_t"/>
+        <tableAttr name="ringPattern" desc="ring_pattern"  type="ca_omci_uint8_t"/>
+        <tableAttr name="ringFile"    desc="ring_file"     type="ca_omci_uint16_t"/>
+        <tableAttr name="ringFileRep" desc="ring_file_rep" type="ca_omci_uint8_t"/>
+        <tableAttr name="ringText"    desc="ring_text"     type="ca_omci_uint16_t"/>
+    </table>
+</me>
+<me mename="vlan_tag_oper"        meDescr="vlanTagOper"       classid="78"    multipkt="0" action="create,delete,get,set">
+  <attr attrName="us_oper_mode" attrDescr="usOperMode" attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="us_tci_value" attrDescr="usTciValue" attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="ds_oper_mode" attrDescr="dsOperMode" attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="assoc_type"   attrDescr="assocType"  attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="assoc_point"  attrDescr="assocPoint" attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+    <enum enumName="us_oper_mode">
+        <element name="as_is"   value="0"/>
+        <element name="tagged"  value="1"/>
+        <element name="prepend" value="2"/>
+    </enum>
+    <enum enumName="ds_oper_mode">
+        <element name="as_is"   value="0"/>
+        <element name="tagged"  value="1"/>
+    </enum>
+    <enum enumName="assoc_type">
+        <element name="default"   value="0"/>
+        <element name="iphost"    value="1"/>
+        <element name="8021p"     value="2"/>
+        <element name="mac_port"  value="3"/>
+        <element name="xdsl"      value="4"/>
+        <element name="gem_iwtp"  value="5"/>
+        <element name="multi_gem" value="6"/>
+        <element name="moca"      value="7"/>
+        <element name="reserved"  value="8"/>
+        <element name="eth_flow"  value="9"/>
+        <element name="pptp_eth"  value="10"/>
+        <element name="veip"      value="11"/>
+        <element name="mpls"      value="12"/>
+    </enum>
+</me>
+<me mename="mac_port_filter_pre"  meDescr="macPortFilterPre"  classid="79"    multipkt="0" action="get,set">
+  <attr attrName="ipv4_multi_filter"   attrDescr="ipv4MultiFilter"  attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="ipv6_multi_filter"   attrDescr="ipv6MultiFilter"  attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="ipv4_broad_filter"   attrDescr="ipv4BroadFilter"  attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="rarp_filter"         attrDescr="rarpFilter"       attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="ipx_filter"          attrDescr="ipxFilter"        attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="net_beui_filter"     attrDescr="netBeuiFilter"    attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="apple_talk_filter"   attrDescr="appleTalkFilter"  attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="brg_mng_info_filter" attrDescr="brgMngInfoFilter" attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="arp_filter"          attrDescr="arpFilter"        attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="pppoe_broad_filter"  attrDescr="pppoeBroadFilter" attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+</me>
+<me mename="vlan_tag_filter"      meDescr="vlanTagFilter"     classid="84"    multipkt="0" action="create,delete,get,set">
+  <attr attrName="vlan_list"  attrDescr="vlanList"  attrAction="RWS"   attrDataType="ca_omci_uint8_t" attrSize="OMCI_VLAN_LIST_LEN"/>
+  <attr attrName="forward_op" attrDescr="forwardOp" attrAction="RWS"   attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="number"     attrDescr="number"    attrAction="RWS"   attrDataType="ca_omci_uint8_t" attrSize="0"/>
+</me>
+<me mename="eth_pm_his2"          meDescr="ethPmHis2"         classid="89"    multipkt="0" action="create,delete,get,set,GetCurrData">
+  <attr attrName="interval_end_time"      attrDescr="intervalEndT"        attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="thres_id"               attrDescr="thresId"             attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="pppoe_filter_frame_cnt" attrDescr="pppoeFilterFrameCnt" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+</me>
+<me mename="ieee_dot1p_srv"       meDescr="ieeeDot1pSrv"      classid="130"   multipkt="1" action="create,delete,get,set">
+  <attr attrName="tp_pointer"      attrDescr="tpPointer"     attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="iwtp_pri0"       attrDescr="iwtpPri0"      attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="iwtp_pri1"       attrDescr="iwtpPri1"      attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="iwtp_pri2"       attrDescr="iwtpPri2"      attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="iwtp_pri3"       attrDescr="iwtpPri3"      attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="iwtp_pri4"       attrDescr="iwtpPri4"      attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="iwtp_pri5"       attrDescr="iwtpPri5"      attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="iwtp_pri6"       attrDescr="iwtpPri6"      attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="iwtp_pri7"       attrDescr="iwtpPri7"      attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="unmark_frame_op" attrDescr="unmarkFrameOp" attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="dscp_to_pbit"    attrDescr="dscp2Pbit"     attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="OMCI_DSCP_TO_PBIT_LEN"/>
+  <attr attrName="def_pbit_assu"   attrDescr="defPbitAssu"   attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="tp_type"         attrDescr="tpType"        attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+    <enum enumName="tp_type">
+        <element name="bridge"   value="0"/>
+        <element name="pptp_eth" value="1"/>
+        <element name="iphost"   value="2"/>
+        <element name="eth_flow" value="3"/>
+        <element name="xdsl"     value="4"/>
+        <element name="reserved" value="5"/>
+        <element name="moca"     value="6"/>
+        <element name="veip"     value="7"/>
+        <element name="vcc"      value="8"/>
+    </enum>
+</me>
+<me mename="olt_g"                meDescr="oltG"              classid="131"   multipkt="1" action="get,set">
+  <attr attrName="olt_vendor_id" attrDescr="oltVendorId" attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="OMCI_VENDOR_ID_LEN"/>
+  <attr attrName="eq_id"         attrDescr="eqId"        attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="OMCI_EQID_LEN"/>
+  <attr attrName="version"       attrDescr="version"     attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="OMCI_VERSION_LEN"/>
+  <attr attrName="time_of_day"   attrDescr="timeOfDay"   attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="OMCI_TIME_OF_DAY_LEN"/>
+</me>
+<me mename="onu_power_shed"       meDescr="onuPowerShed"      classid="133"   multipkt="0" action="get,set">
+  <attr attrName="rpt_reset_itv"     attrDescr="restorePowerTimeResetInterval" attrAction="RW"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="data_shed_itv"     attrDescr="dataShedInterval"              attrAction="RW"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="voice_shed_itv"    attrDescr="voideShedInterval"             attrAction="RW"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="video_ol_shed_itv" attrDescr="vedioOverlayShedInterval"      attrAction="RW"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="video_rt_shed_itv" attrDescr="vedioReturnShedInterval"       attrAction="RW"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="dsl_shed_itv"      attrDescr="dslShedInterval"               attrAction="RW"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="atm_shed_itv"      attrDescr="atmShedInterval"               attrAction="RW"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="ces_shed_itv"      attrDescr="cesShedInterval"               attrAction="RW"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="frame_shed_itv"    attrDescr="frameShedInterval"             attrAction="RW"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="sdh_shed_itv"      attrDescr="sdhShedInterval"               attrAction="RW"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="shed_status"       attrDescr="shedStatus"                    attrAction="RWV" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+</me>
+<me mename="ip_host"              meDescr="iphost"            classid="134"   multipkt="1" action="get,set,test">
+  <attr attrName="ip_option"      attrDescr="ipOption"    attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="mac_addr"       attrDescr="macAddr"     attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="OMCI_MAC_ADDR_LEN"/>
+  <attr attrName="onu_id"         attrDescr="onuId"       attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="25"/>
+  <attr attrName="ip_addr"        attrDescr="ipAddr"      attrAction="RW"  attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="mask"           attrDescr="mask"        attrAction="RW"  attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="gateway"        attrDescr="gateway"     attrAction="RW"  attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="pri_dns"        attrDescr="priDns"      attrAction="RW"  attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="snd_dns"        attrDescr="sndDns"      attrAction="RW"  attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="cur_addr"       attrDescr="curAddr"     attrAction="RV"  attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="cur_mask"       attrDescr="curMask"     attrAction="RV"  attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="cur_gateway"    attrDescr="curGateway"  attrAction="RV"  attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="cur_pri_dns"    attrDescr="curPriDns"   attrAction="RV"  attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="cur_snd_dns"    attrDescr="cur2ndDns"   attrAction="RV"  attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="domain_name"    attrDescr="domainName"  attrAction="RV"  attrDataType="ca_omci_uint8_t"  attrSize="25"/>
+  <attr attrName="host_name"      attrDescr="hostName"    attrAction="RV"  attrDataType="ca_omci_uint8_t"  attrSize="25"/>
+  <attr attrName="relay_agent_op" attrDescr="relayAgentP" attrAction="RW"  attrDataType="ca_omci_uint32_t" attrSize="0"/>
+      <enum enumName="option">
+        <element name="enable_dhcp" value="0x01"/>
+        <element name="resp_pings"   value="0x02"/>
+        <element name="resp_trace"   value="0x04"/>
+        <element name="enable_ip"   value="0x08"/>
+      </enum>
+</me>
+<me mename="ip_host_pm"           meDescr="iphostPm"          classid="135"   multipkt="0" action="create,delete,get,set,GetCurrData">
+  <attr attrName="interval_end_time" attrDescr="itvEndTime"    attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="thres_id"          attrDescr="thresholdData" attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="icmp_err"          attrDescr="icmpErr"       attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="dns_err"           attrDescr="dnsErr"        attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="dhcp_timeouts"     attrDescr="dhcpTimeout"   attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="ip_addr_conflict"  attrDescr="ipAddrConf"    attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="out_of_mem"        attrDescr="outOfMem"      attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="internal_err"      attrDescr="internalErr"   attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="dhcp_attempts_cnt" attrDescr="dhcpAttempCnt" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="dhcp_ack_rx_cnt"   attrDescr="dhcpAckRxCnt"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="dhcp_nacks_cnt"    attrDescr="dhcpNacksCnt"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="dhcp_rsp_err"      attrDescr="dhcpRspErr"    attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="dhcp_rsp_incom"    attrDescr="dhcpRspIncom"  attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+</me>
+<me mename="tcp_udp_cfg"          meDescr="tcpUdpCfg"         classid="136"   multipkt="0" action="create,delete,get,set">
+  <attr attrName="port_id"          attrDescr="portId"            attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="protocol"         attrDescr="portocol"          attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="tos_diffserv_fie" attrDescr="tosDiffservField"  attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="iphost_point"     attrDescr="iphostPoint"       attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+</me>
+<me mename="net_addr"             meDescr="netAddr"           classid="137"   multipkt="0" action="create,delete,get,set">
+  <attr attrName="security_point" attrDescr="securityPoint" attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="addr_point"     attrDescr="addrPoint"     attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+</me>
+<me mename="voip_cfg"             meDescr="voipCfg"           classid="138"   multipkt="1" action="get,set,alarmReport">
+  <attr attrName="avail_sig_proto"   attrDescr="availSigProto"   attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="sig_proto_used"    attrDescr="sigProtoUsed"    attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="avail_voip_method" attrDescr="availVoipMethod" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="voip_method_used"  attrDescr="voipMethodUsed"  attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="voip_addr_point"   attrDescr="voipAddrPoint"   attrAction="RW"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="voip_cfg_state"    attrDescr="voipCfgState"    attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="retrieve_prof"     attrDescr="retrieveProf"    attrAction="W"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="prof_ver"          attrDescr="profVer"         attrAction="RV"  attrDataType="ca_omci_uint8_t"  attrSize="25"/>
+    <enum enumName="avail_proto">
+        <element name="sip_bit"   value="0x1"/>
+        <element name="h248_bit"  value="0x2"/>
+        <element name="mgcp_bit"  value="0x4"/>
+    </enum>
+    <enum enumName="used_proto">
+        <element name="none"     value="0"/>
+        <element name="sip"      value="1"/>
+        <element name="h248"     value="2"/>
+        <element name="mgcp"     value="3"/>
+        <element name="non_omci" value="0xff"/>
+    </enum>
+    <enum enumName="cfg_method">
+        <element name="omci"  value="0x1"/>
+        <element name="file"  value="0x2"/>
+        <element name="tr69"  value="0x4"/>
+        <element name="ietf"  value="0x8"/>
+    </enum>
+    <enum enumName="used_method">
+        <element name="none" value="0"/>
+        <element name="omci" value="1"/>
+        <element name="file" value="2"/>
+        <element name="tr69" value="3"/>
+        <element name="ietf" value="4"/>
+    </enum>
+    <enum enumName="cfg_st">
+        <element name="inactive" value="0"/>
+        <element name="active"   value="1"/>
+        <element name="init"     value="2"/>
+        <element name="fault"    value="3"/>
+    </enum>
+</me>
+<me mename="voip_ctp"             meDescr="voipCtp"           classid="139"   multipkt="0" action="create,delete,get,set">
+  <attr attrName="user_pro_pointer" attrDescr="userProPointer" attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="pptp_pointer"     attrDescr="pptpPointer"    attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="media_prof_point" attrDescr="mediaProfPoint" attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="signal_code"      attrDescr="signalCode"     attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+    <enum enumName="sign_code">
+        <element name="loop_start"      value="1"/>
+        <element name="ground_start"    value="2"/>
+        <element name="loop_rs_battery" value="3"/>
+        <element name="coin_first"      value="4"/>
+        <element name="dial_tone_first" value="5"/>
+        <element name="multi_party"     value="6"/>
+    </enum>
+</me>
+<me mename="call_ctl_pm"          meDescr="callCtlPm"         classid="140"   multipkt="0" action="create,delete,get,set,GetCurrData">
+  <attr attrName="interval_end_time"    attrDescr="intervalEndT"    attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="thres_id"             attrDescr="thresId"            attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="call_setup_fail"      attrDescr="callSetupFail"      attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="call_setup_timer"     attrDescr="callSetupTimer"     attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="call_terminate_fail"  attrDescr="callTerminateFail"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="analog_release"       attrDescr="analogRelease"      attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="analog_offhook_timer" attrDescr="analogOffhookTimer" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+</me>
+<me mename="voip_line_st"         meDescr="voipLineSt"        classid="141"   multipkt="1" action="get">
+  <attr attrName="codec_use"           attrDescr="codecUse"       attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="server_st"           attrDescr="serverSt"       attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="session_type"        attrDescr="sessionType"    attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="call1_packet_period" attrDescr="call1PktPeriod" attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="call2_packet_period" attrDescr="call2PktPeriod" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="call1_dst_addr"      attrDescr="call1DstAddr"   attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="25"/>
+  <attr attrName="call2_dst_addr"      attrDescr="call2DstAddr"   attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="25"/>
+  <attr attrName="line_state"          attrDescr="lineState"      attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="em_call_status"      attrDescr="emCallStatus"   attrAction="RV"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+    <enum enumName="codec_use">
+        <element name="pcmu"      value="0"/>
+        <element name="gsm"       value="3"/>
+        <element name="g723"      value="4"/>
+        <element name="dvi48khz"  value="5"/>
+        <element name="dvi416khz" value="6"/>
+        <element name="lpc"       value="7"/>
+        <element name="pcma"      value="8"/>
+        <element name="g722"      value="9"/>
+        <element name="l162"      value="10"/>
+        <element name="l161"      value="11"/>
+        <element name="qcelp"     value="12"/>
+        <element name="cn"        value="13"/>
+        <element name="mpa"       value="14"/>
+        <element name="g728"      value="15"/>
+        <element name="dvi411025" value="16"/>
+        <element name="dvi422050" value="17"/>
+        <element name="g729"      value="18"/>
+    </enum>
+    <enum enumName="server_st">
+        <element name="none"          value="0"/>
+        <element name="reg"           value="1"/>
+        <element name="insession"     value="2"/>
+        <element name="reg_icmp_err"  value="3"/>
+        <element name="reg_tcp_fail"  value="4"/>
+        <element name="reg_auth_fail" value="5"/>
+        <element name="reg_timeout"   value="6"/>
+        <element name="reg_srv_fail"  value="7"/>
+        <element name="ivt_icmp_err"  value="8"/>
+        <element name="ivt_tcp_fail"  value="9"/>
+        <element name="ivt_auth_fail" value="10"/>
+        <element name="ivt_timeout"   value="11"/>
+        <element name="ivt_srv_fail"  value="12"/>
+        <element name="port_uncfg"    value="13"/>
+        <element name="cfg_done"      value="14"/>
+        <element name="disable"       value="15"/>
+    </enum>
+    <enum enumName="session_type">
+        <element name="idle"        value="0"/>
+        <element name="2way"        value="1"/>
+        <element name="3way"        value="2"/>
+        <element name="fax_modem"   value="3"/>
+        <element name="telemetry"   value="4"/>
+        <element name="conference"  value="5"/>
+    </enum>
+    <enum enumName="line_state">
+        <element name="idle"       value="0"/>
+        <element name="offhook"    value="1"/>
+        <element name="dialing"    value="2"/>
+        <element name="ring"       value="3"/>
+        <element name="ringback"   value="4"/>
+        <element name="connecting" value="5"/>
+        <element name="connected"  value="6"/>
+        <element name="disconnect" value="7"/>
+        <element name="roh"        value="8"/>
+        <element name="roh_tone"   value="9"/>
+        <element name="undefine"   value="10"/>
+    </enum>
+</me>
+<me mename="voip_media_prof"      meDescr="voipMediaProf"     classid="142"   multipkt="0" action="create,delete,get,set">
+  <attr attrName="fax_mode"        attrDescr="faxMode"      attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="srv_prof_point"  attrDescr="srvProfPoint" attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="fst_codec"       attrDescr="fstCodec"     attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="fst_pkt_period"  attrDescr="fstPktPeriod" attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="fst_silence_sup" attrDescr="fstSilSup"    attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="snd_codec"       attrDescr="sndCodec"     attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="snd_pkt_period"  attrDescr="sndPktPeriod" attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="snd_silence_sup" attrDescr="sndSilSup"    attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="trd_codec"       attrDescr="trdCodec"     attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="trd_pkt_period"  attrDescr="trdPktPeriod" attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="trd_silence_sup" attrDescr="trdSilSup"    attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="fth_codec"       attrDescr="fthCodec"     attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="fth_pkt_period"  attrDescr="fthPktPeriod" attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="fth_silence_sup" attrDescr="fthSilSup"    attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="oob_dtmf"        attrDescr="oobDtmf"      attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="rtp_prof_point"  attrDescr="rtpProfPoint" attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+    <enum enumName="codec">
+        <element name="pcmu"       value="0"/>
+        <element name="gsm"        value="3"/>
+        <element name="g723"       value="4"/>
+        <element name="8000_dvi4"  value="5"/>
+        <element name="16000_dvi4" value="6"/>
+        <element name="lpc"        value="7"/>
+        <element name="pcma"       value="8"/>
+        <element name="g722"       value="9"/>
+        <element name="l16_2_chn"  value="10"/>
+        <element name="l16_1_chn"  value="11"/>
+        <element name="qcelp"      value="12"/>
+        <element name="cn"         value="13"/>
+        <element name="mpa"        value="14"/>
+        <element name="g728"       value="15"/>
+        <element name="11025_dvi4" value="16"/>
+        <element name="22050_dvi4" value="17"/>
+        <element name="g729"       value="18"/>
+    </enum>
+</me>
+<me mename="rtp_prof_data"        meDescr="rtpProfData"       classid="143"   multipkt="0" action="create,delete,get,set">
+  <attr attrName="min_local_port"  attrDescr="minLocalPort"   attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="max_local_port"  attrDescr="maxLocalPort"   attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="dscp_mark"       attrDescr="dscpMark"       attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="piggyback_event" attrDescr="piggybackEvent" attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="tone_event"      attrDescr="toneEvent"      attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="dtmf_event"      attrDescr="dtmfEvent"      attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="cas_event"       attrDescr="casEvent"       attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="iphost_point"    attrDescr="iphostPoint"    attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+</me>
+<me mename="rtp_pm"               meDescr="rtpPm"             classid="144"   multipkt="0" action="create,delete,get,set,GetCurrData">
+  <attr attrName="interval_end_time" attrDescr="intervalEndT" attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="thres_id"          attrDescr="thresId"         attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="rtp_err"           attrDescr="rtpErr"          attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="packet_loss"       attrDescr="packetLoss"      attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="max_jitter"        attrDescr="maxJitter"       attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="max_time_bw_rtcp"  attrDescr="maxTimeBwRtcp"   attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="buff_underflow"    attrDescr="buffUnderflow"   attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="buff_overflow"     attrDescr="buffOverflow"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+</me>
+<me mename="net_dial_plan"        meDescr="netDialPlan"       classid="145"   multipkt="0" action="create,delete,get,Getnext,set,tableSet">
+  <attr attrName="dial_plan_num"     attrDescr="dialPlanNum"     attrAction="R"   attrDataType="ca_omci_uint16_t"          attrSize="0"/>
+  <attr attrName="dial_plan_tbl_max" attrDescr="dialPlanTblMax"  attrAction="RS"  attrDataType="ca_omci_uint16_t"          attrSize="0"/>
+  <attr attrName="cri_dial_timeout"  attrDescr="criDialTimeout"  attrAction="RWS" attrDataType="ca_omci_uint16_t"          attrSize="0"/>
+  <attr attrName="part_dial_timeout" attrDescr="partDialTimeout" attrAction="RWS" attrDataType="ca_omci_uint16_t"          attrSize="0"/>
+  <attr attrName="dial_plan_format"  attrDescr="dialPlanFormat"  attrAction="RWS" attrDataType="ca_omci_uint8_t"           attrSize="0"/>
+  <attr attrName="dial_plan_tbl"     attrDescr="dialPlanTbl"     attrAction="RWT" attrDataType="ca_omci_dial_plan_table_t" attrSize="10"/>
+    <enum enumName="fmt">
+        <element name="not_def"      value="0"/>
+        <element name="h248"         value="1"/>
+        <element name="ncs"          value="2"/>
+        <element name="vendor_speci" value="3"/>
+    </enum>
+    <table tableName="ca_omci_dial_plan_table_t">
+        <tableAttr name="dialPlanId"    desc="dial_plan_id"    type="ca_omci_uint8_t"/>
+        <tableAttr name="action"        desc="action"          type="ca_omci_uint8_t"/>
+        <tableAttr name="dialPlanToken" desc="dial_plan_token" type="ca_omci_uint8_t" size="28"/>
+    </table>
+</me>
+<me mename="voip_app_srv"         meDescr="voipAppSrv"        classid="146"   multipkt="0" action="create,delete,get,set">
+  <attr attrName="cid_feature"       attrDescr="cidFeature"      attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="call_wait_feature" attrDescr="callWaitFeature" attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="call_prog_feature" attrDescr="callProgFeature" attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="call_pres_feature" attrDescr="callPresFeature" attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="dire_conn_featurn" attrDescr="direConnFeaturn" attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="dire_conn_up"      attrDescr="direConnUp"      attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="bri_line_agt_up"   attrDescr="briLineAgtUp"    attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="conf_fact_up"      attrDescr="confFactUp"      attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+      <enum enumName="cid_feat">
+        <element name="def"          value="0x00"/>
+        <element name="calling_num"  value="0x01"/>
+        <element name="calling_name" value="0x02"/>
+        <element name="cid_blocking" value="0x04"/>
+        <element name="cid_num"      value="0x08"/>
+        <element name="cid_name"     value="0x10"/>
+        <element name="acr"          value="0x20"/>
+      </enum>
+      <enum enumName="cw_feat">
+        <element name="def"              value="0x00"/>
+        <element name="call_waiting"     value="0x01"/>
+        <element name="cid_announcement" value="0x02"/>
+      </enum>
+      <enum enumName="prog_feat">
+        <element name="def"                 value="0x0000"/>
+        <element name="3way"                value="0x0001"/>
+        <element name="call_trans"          value="0x0002"/>
+        <element name="call_hold"           value="0x0004"/>
+        <element name="call_park"           value="0x0008"/>
+        <element name="dont_disturb"        value="0x0010"/>
+        <element name="flash_emer_srv_call" value="0x0020"/>
+        <element name="emer_sev_hold"       value="0x0040"/>
+        <element name="6way"                value="0x0080"/>
+      </enum>
+      <enum enumName="pres_feat">
+        <element name="def"                 value="0x0000"/>
+        <element name="mwi_splash_ring"     value="0x0001"/>
+        <element name="mwi_spec_dial_tone"  value="0x0002"/>
+        <element name="mwi_visual"          value="0x0004"/>
+        <element name="call_forward"        value="0x0008"/>
+      </enum>
+      <enum enumName="dc_feat">
+        <element name="def"      value="0x00"/>
+        <element name="enable"   value="0x01"/>
+        <element name="dt_delay" value="0x02"/>
+      </enum>
+</me>
+<me mename="voip_acces_code"      meDescr="voipAccesCode"     classid="147"   multipkt="0" action="create,delete,get,set">
+  <attr attrName="cancel_call_wait"        attrDescr="cancelCallWait"       attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="OMCI_VOIP_ACCESS_CODE_LEN"/>
+  <attr attrName="call_hold"               attrDescr="callHold"             attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="OMCI_VOIP_ACCESS_CODE_LEN"/>
+  <attr attrName="call_park"               attrDescr="callPark"             attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="OMCI_VOIP_ACCESS_CODE_LEN"/>
+  <attr attrName="cid_active"              attrDescr="cidActive"            attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="OMCI_VOIP_ACCESS_CODE_LEN"/>
+  <attr attrName="cid_deactive"            attrDescr="cidDeactive"          attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="OMCI_VOIP_ACCESS_CODE_LEN"/>
+  <attr attrName="dont_disturb_act"        attrDescr="dontDisturbAct"       attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="OMCI_VOIP_ACCESS_CODE_LEN"/>
+  <attr attrName="dont_disturb_deact"      attrDescr="dontDisturbDeact"     attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="OMCI_VOIP_ACCESS_CODE_LEN"/>
+  <attr attrName="dont_disturb_pin_change" attrDescr="dontDisturbPinChange" attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="OMCI_VOIP_ACCESS_CODE_LEN"/>
+  <attr attrName="emer_srv_num"            attrDescr="emerSrvNum"           attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="OMCI_VOIP_ACCESS_CODE_LEN"/>
+  <attr attrName="intercom_srv"            attrDescr="intercomSrv"          attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="OMCI_VOIP_ACCESS_CODE_LEN"/>
+  <attr attrName="blind_call_trans"        attrDescr="blindCallTrans"       attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="OMCI_VOIP_ACCESS_CODE_LEN"/>
+  <attr attrName="atten_call_trans"        attrDescr="attenCallTrans"       attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="OMCI_VOIP_ACCESS_CODE_LEN"/>
+</me>
+<me mename="auth_scy"             meDescr="authScy"           classid="148"   multipkt="0" action="create,delete,get,set">
+  <attr attrName="valid_scheme"  attrDescr="validScheme" attrAction="RW"   attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="usr_name_1"    attrDescr="usrName1"    attrAction="RW"   attrDataType="ca_omci_uint8_t" attrSize="25"/>
+  <attr attrName="pwd"           attrDescr="pwd"         attrAction="RW"   attrDataType="ca_omci_uint8_t" attrSize="25"/>
+  <attr attrName="realm"         attrDescr="realm"       attrAction="RW"   attrDataType="ca_omci_uint8_t" attrSize="25"/>
+  <attr attrName="usr_name_2"    attrDescr="usrName2"    attrAction="RW"   attrDataType="ca_omci_uint8_t" attrSize="25"/>
+    <enum enumName="scheme">
+        <element name="disable" value="0"/>
+        <element name="md5"     value="1"/>
+        <element name="basic"   value="3"/>
+    </enum>
+</me>
+<me mename="sip_cfg_portal"       meDescr="sipCfgPortal"      classid="149"   multipkt="0" action="get,Getnext,unMibUpload">
+  <attr attrName="cfg_text_tbl" attrDescr="cfgTextTbl" attrAction="RVT" attrDataType="ca_omci_uint8_t" attrSize="1024"/>
+</me>
+<me mename="sip_agt_cfg"          meDescr="sipAgtCfg"         classid="150"   multipkt="0" action="create,delete,get,set,tableSet,Getnext">
+  <attr attrName="proxy_srv_addr_point"      attrDescr="proxySrvAddrPoint"  attrAction="RWS" attrDataType="ca_omci_uint16_t"         attrSize="0"/>
+  <attr attrName="outbound_proxy_addr_point" attrDescr="outboundProxyAddrP" attrAction="RWS" attrDataType="ca_omci_uint16_t"         attrSize="0"/>
+  <attr attrName="pri_sip_dns"               attrDescr="priSipDns"          attrAction="RWS" attrDataType="ca_omci_uint32_t"         attrSize="0"/>
+  <attr attrName="snd_sip_dns"               attrDescr="sndSipDns"          attrAction="RWS" attrDataType="ca_omci_uint32_t"         attrSize="0"/>
+  <attr attrName="tcp_udp_pointer"           attrDescr="tcpUdpPointer"      attrAction="RW"  attrDataType="ca_omci_uint16_t"         attrSize="0"/>
+  <attr attrName="reg_exp_time"              attrDescr="regExpTime"         attrAction="RW"  attrDataType="ca_omci_uint32_t"         attrSize="0"/>
+  <attr attrName="rereg_head_start_time"     attrDescr="reregHeadStartT"    attrAction="RW"  attrDataType="ca_omci_uint32_t"         attrSize="0"/>
+  <attr attrName="host_part_url"             attrDescr="hostPartUrl"        attrAction="RWS" attrDataType="ca_omci_uint16_t"         attrSize="0"/>
+  <attr attrName="sip_status"                attrDescr="sipStatus"          attrAction="RV"  attrDataType="ca_omci_uint8_t"          attrSize="0"/>
+  <attr attrName="sip_registrar"             attrDescr="sipRegistrar"       attrAction="RWS" attrDataType="ca_omci_uint16_t"         attrSize="0"/>
+  <attr attrName="softswitch"                attrDescr="softswitch"         attrAction="RWS" attrDataType="ca_omci_uint32_t"         attrSize="0"/>
+  <attr attrName="sip_resp_table"            attrDescr="sipRespTable"       attrAction="RWT" attrDataType="ca_omci_sip_resp_table_t" attrSize="64"/>
+  <attr attrName="op_trans_ctl"              attrDescr="opTransCtl"         attrAction="RWS" attrDataType="ca_omci_uint8_t"          attrSize="0"/>
+  <attr attrName="url_format"                attrDescr="urlFormat"          attrAction="RWS" attrDataType="ca_omci_uint8_t"          attrSize="0"/>
+  <attr attrName="redundant_agent_point"     attrDescr="redundantAgentP"    attrAction="RWS" attrDataType="ca_omci_uint16_t"         attrSize="0"/>
+    <enum enumName="sip_st">
+        <element name="init"           value="0"/>
+        <element name="connect"        value="1"/>
+        <element name="icmp_err"       value="2"/>
+        <element name="malformed_rsp"  value="3"/>
+        <element name="inadequate_nfo" value="4"/>
+        <element name="timeout_rsp"    value="5"/>
+        <element name="offline"        value="6"/>
+    </enum>
+    <table tableName="ca_omci_sip_resp_table_t">
+        <tableAttr name="sipRespCode" desc="sip_rsp_code" type="ca_omci_uint16_t"/>
+        <tableAttr name="tone"        desc="tone"         type="ca_omci_uint8_t"/>
+        <tableAttr name="textMsg"     desc="text_msg"     type="ca_omci_uint16_t"/>
+    </table>
+</me>
+<me mename="sip_agt_pm"           meDescr="sipAgtPm"          classid="151"   multipkt="0" action="create,delete,get,set,GetCurrData">
+  <attr attrName="interval_end_time"    attrDescr="intervalEndT"       attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="thres_id"             attrDescr="thresId"            attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="transactions"         attrDescr="transactions"       attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_invite_req"        attrDescr="rxInviteReq"        attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_invite_retrans"    attrDescr="rxInviteRetrans"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_noninvite_req"     attrDescr="rxNoninviteReq"     attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_noninvite_retrans" attrDescr="rxNoninviteRetrans" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_rsp"               attrDescr="rxRsp"              attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_rsp_retrans"       attrDescr="rxRspRetrans"       attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="tx_invite_req"        attrDescr="txInviteReq"        attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="tx_invite_retrans"    attrDescr="txInviteRetrans"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="tx_noninvite_req"     attrDescr="txNoninviteReq"     attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="tx_noninvite_retrans" attrDescr="txNoninviteRetrans" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="tx_rsp"               attrDescr="txRsp"              attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="tx_rsp_retrans"       attrDescr="txRspRetrans"       attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+</me>
+<me mename="sip_call_init_pm"     meDescr="sipCallInitPm"     classid="152"   multipkt="0" action="create,delete,get,set,GetCurrData">
+  <attr attrName="interval_end_time" attrDescr="intervalEndT" attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="thres_id"          attrDescr="thresId"      attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="fail_conn_cnt"     attrDescr="failConnCnt"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="fail_valid_cnt"    attrDescr="failValidCnt" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="timeout_cnt"       attrDescr="timeoutCnt"   attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="fail_rx_cnt"       attrDescr="failRxCnt"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="fail_auth_cnt"     attrDescr="failAuthCnt"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+</me>
+<me mename="sip_usr"              meDescr="sipUsr"            classid="153"   multipkt="0" action="create,delete,get,set,alarmReport">
+  <attr attrName="sip_agt_point"        attrDescr="sipAgtPoint"       attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="usr_part_aor"         attrDescr="usrPartAor"        attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="sip_display_name"     attrDescr="sipDisplayName"    attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="25"/>
+  <attr attrName="usr_pwd_point"        attrDescr="usrPwdPoint"       attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="mail_srv_sip_url"     attrDescr="mailSrvSipUrl"     attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="mail_subscr_exp_time" attrDescr="mailSubscrExpTime" attrAction="RWS" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="new_dial_plan_point"  attrDescr="newDialPlanPoint"  attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="app_srv_prof_point"   attrDescr="appArvProfPoint"   attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="feature_code_point"   attrDescr="featureCodePoint"  attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="pptp_point"           attrDescr="pptpPoint"         attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="release_timer"        attrDescr="releaseTimer"      attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="roh_timer"            attrDescr="rohTimer"          attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="mali_com_id_fail"     attrDescr="maliComIdFail"     attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+</me>
+<me mename="mgc_cfg_portal"       meDescr="mgcCfgPortal"      classid="154"   multipkt="0" action="get,Getnext,unMibUpload">
+  <attr attrName="mgc_cfg_text_tbl" attrDescr="mgcCfgTextTbl" attrAction="RVT" attrDataType="ca_omci_uint8_t" attrSize="1024"/>
+</me>
+<me mename="mgc_cfg_data"         meDescr="mgcCfgData"        classid="155"   multipkt="0" action="create,delete,get,set,alarmReport">
+  <attr attrName="pri_mgc"         attrDescr="priMgc"        attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="snd_mgc"         attrDescr="sndMgc"        attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="tcp_upd_pointer" attrDescr="tcpUdpPointer" attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="version"         attrDescr="version"       attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="msg_format"      attrDescr="msgFormat"     attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="max_retry_time"  attrDescr="maxRetryTime"  attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="max_retry_atte"  attrDescr="maxRetryAtte"  attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="srv_ch_delay"    attrDescr="srvChDelay"    attrAction="RW"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="term_id_base"    attrDescr="termIdBase"    attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="25"/>
+  <attr attrName="softswitch"      attrDescr="softswitch"    attrAction="RWS" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="msg_id_pointer"  attrDescr="msgIdPointer"  attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+    <enum enumName="msg_form">
+        <element name="text_long"  value="0"/>
+        <element name="text_short" value="1"/>
+        <element name="binary"     value="2"/>
+    </enum>
+</me>
+<me mename="mgc_pm"               meDescr="mgcPm"             classid="156"   multipkt="0" action="create,delete,get,set,GetCurrData">
+  <attr attrName="interval_end_time" attrDescr="intervalEndT" attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="thres_id"          attrDescr="thresId"      attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="rx_msg"            attrDescr="rxMsg"        attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_oct"            attrDescr="rxOct"        attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="tx_msg"            attrDescr="txMsg"        attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="tx_oct"            attrDescr="txOct"        attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="protocol_err"      attrDescr="procotolErr"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="tx_loss"           attrDescr="txLoss"       attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="last_det_event"    attrDescr="lastDetEvent" attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="last_det_eve_time" attrDescr="lastDetEveT"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="last_det_reser_t"  attrDescr="lastDetResT"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+    <enum enumName="det_event">
+        <element name="no"             value="0"/>
+        <element name="link_up"        value="1"/>
+        <element name="link_down"      value="2"/>
+        <element name="per_err"        value="3"/>
+        <element name="local_shutdown" value="4"/>
+        <element name="failover_down"  value="5"/>
+        <element name="other"          value="255"/>
+    </enum>
+</me>
+<me mename="large_string"         meDescr="largeString"       classid="157"   multipkt="0" action="create,delete,get,set">
+  <attr attrName="part_num" attrDescr="partNum" attrAction="RWV" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="part1"    attrDescr="part1"   attrAction="RWV" attrDataType="ca_omci_uint8_t" attrSize="OMCI_LARGE_STR_LEN"/>
+  <attr attrName="part2"    attrDescr="part2"   attrAction="RWV" attrDataType="ca_omci_uint8_t" attrSize="OMCI_LARGE_STR_LEN"/>
+  <attr attrName="part3"    attrDescr="part3"   attrAction="RWV" attrDataType="ca_omci_uint8_t" attrSize="OMCI_LARGE_STR_LEN"/>
+  <attr attrName="part4"    attrDescr="part4"   attrAction="RWV" attrDataType="ca_omci_uint8_t" attrSize="OMCI_LARGE_STR_LEN"/>
+  <attr attrName="part5"    attrDescr="part5"   attrAction="RWV" attrDataType="ca_omci_uint8_t" attrSize="OMCI_LARGE_STR_LEN"/>
+  <attr attrName="part6"    attrDescr="part6"   attrAction="RWV" attrDataType="ca_omci_uint8_t" attrSize="OMCI_LARGE_STR_LEN"/>
+  <attr attrName="part7"    attrDescr="part7"   attrAction="RWV" attrDataType="ca_omci_uint8_t" attrSize="OMCI_LARGE_STR_LEN"/>
+  <attr attrName="part8"    attrDescr="part8"   attrAction="RWV" attrDataType="ca_omci_uint8_t" attrSize="OMCI_LARGE_STR_LEN"/>
+  <attr attrName="part9"    attrDescr="part9"   attrAction="RWV" attrDataType="ca_omci_uint8_t" attrSize="OMCI_LARGE_STR_LEN"/>
+  <attr attrName="part10"   attrDescr="part10"  attrAction="RWV" attrDataType="ca_omci_uint8_t" attrSize="OMCI_LARGE_STR_LEN"/>
+  <attr attrName="part11"   attrDescr="part11"  attrAction="RWV" attrDataType="ca_omci_uint8_t" attrSize="OMCI_LARGE_STR_LEN"/>
+  <attr attrName="part12"   attrDescr="part12"  attrAction="RWV" attrDataType="ca_omci_uint8_t" attrSize="OMCI_LARGE_STR_LEN"/>
+  <attr attrName="part13"   attrDescr="part13"  attrAction="RWV" attrDataType="ca_omci_uint8_t" attrSize="OMCI_LARGE_STR_LEN"/>
+  <attr attrName="part14"   attrDescr="part14"  attrAction="RWV" attrDataType="ca_omci_uint8_t" attrSize="OMCI_LARGE_STR_LEN"/>
+  <attr attrName="part15"   attrDescr="part15"  attrAction="RWV" attrDataType="ca_omci_uint8_t" attrSize="OMCI_LARGE_STR_LEN"/>
+</me>
+<me mename="onu_remote_debug"     meDescr="onuRemoteDbg"      classid="158"   multipkt="0" action="get,Getnext,set,unMibUpload">
+  <attr attrName="cmd_format" attrDescr="cmdFormat" attrAction="R"  attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="cmd"        attrDescr="cmd"       attrAction="W"  attrDataType="ca_omci_uint8_t" attrSize="25"/>
+  <attr attrName="reply_tbl"  attrDescr="replyTbl"  attrAction="RT" attrDataType="ca_omci_uint8_t" attrSize="256"/>
+</me>
+<me mename="eq_prot_prof"         meDescr="eqProtProf"        classid="159"   multipkt="0" action="create,delete,get,set,alarmReport">
+  <attr attrName="prot_slot_1"       attrDescr="protSlot1"    attrAction="RWS" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="prot_slot_2"       attrDescr="protSlot2"    attrAction="RWS" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="work_slot_1"       attrDescr="workSlot1"    attrAction="RWS" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="work_slot_2"       attrDescr="workSlot2"    attrAction="RWS" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="work_slot_3"       attrDescr="workSlot3"    attrAction="RWS" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="work_slot_4"       attrDescr="workSlot4"    attrAction="RWS" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="work_slot_5"       attrDescr="workSlot5"    attrAction="RWS" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="work_slot_6"       attrDescr="workSlot6"    attrAction="RWS" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="work_slot_7"       attrDescr="workSlot7"    attrAction="RWS" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="work_slot_8"       attrDescr="workSlot8"    attrAction="RWS" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="prot_status_1"     attrDescr="protStatus1"  attrAction="R"   attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="prot_status_2"     attrDescr="protStatus2"  attrAction="R"   attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="revertive_ind"     attrDescr="revertiveInd" attrAction="RWS" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="wait_restore_time" attrDescr="waitRestoreT" attrAction="RWS" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+</me>
+<me mename="eq_ext_pkg"           meDescr="eqExtPkg"          classid="160"   multipkt="0" action="get,set, alarmReport">
+  <attr attrName="envi_sense"      attrDescr="enviSense"    attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="cont_clos_outp"  attrDescr="contClosOutp" attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+</me>
+<me mename="ext_vlan_tag_op"      meDescr="externVlanTagOp"   classid="171"   multipkt="1" action="create,delete,get,Getnext,set,tableSet">
+  <attr attrName="assoc_type"   attrDescr="assocType"      attrAction="RWS" attrDataType="ca_omci_uint8_t"       attrSize="0"/>
+  <attr attrName="rx_tbl_max"   attrDescr="rxTableMaxSize" attrAction="R"   attrDataType="ca_omci_uint16_t"      attrSize="0"/>
+  <attr attrName="input_tpid"   attrDescr="inputTpid"      attrAction="RW"  attrDataType="ca_omci_uint16_t"      attrSize="0"/>
+  <attr attrName="output_tpid"  attrDescr="outputTpid"     attrAction="RW"  attrDataType="ca_omci_uint16_t"      attrSize="0"/>
+  <attr attrName="ds_mode"      attrDescr="dsMode"         attrAction="RW"  attrDataType="ca_omci_uint8_t"       attrSize="0"/>
+  <attr attrName="rx_vlan_tbl"  attrDescr="rxVlanTbl"      attrAction="RWT" attrDataType="ca_omci_rx_vlan_tbl_t" attrSize="128"/>
+  <attr attrName="assoc_point"  attrDescr="assocPoint"     attrAction="RWS" attrDataType="ca_omci_uint16_t"      attrSize="0"/>
+  <attr attrName="dscp_to_pbit" attrDescr="dscp2Pbit"      attrAction="RW"  attrDataType="ca_omci_uint8_t"       attrSize="OMCI_DSCP_TO_PBIT_LEN"/>
+    <enum enumName="assoc_type">
+        <element name="mac_port"  value="0"/>
+        <element name="8021p"     value="1"/>
+        <element name="pptp_eth"  value="2"/>
+        <element name="iphost"    value="3"/>
+        <element name="xdsl"      value="4"/>
+        <element name="gem_iwtp"  value="5"/>
+        <element name="multi_gem" value="6"/>
+        <element name="moca"      value="7"/>
+        <element name="reserved"  value="8"/>
+        <element name="eth_flow"  value="9"/>
+        <element name="veip"      value="10"/>
+        <element name="mpls"      value="11"/>
+    </enum>
+    <enum enumName="ds_mode">
+        <element name="inverse"              value="0"/>
+        <element name="fw_unmodify"          value="1"/>
+        <element name="filter_vid_pbit_pass" value="2"/>
+        <element name="filter_vid_pass"      value="3"/>
+        <element name="filter_pbit_pass"     value="4"/>
+        <element name="filter_vid_pbit_dis"  value="5"/>
+        <element name="filter_vid_dis"       value="6"/>
+        <element name="filter_pbit_dis"      value="7"/>
+        <element name="discard_all"          value="8"/>
+    </enum>
+    <table tableName="ca_omci_rx_vlan_tbl_t">
+        <tableAttr name="filterOutter" desc="filter_out"   type="ca_omci_uint32_t"/>
+        <tableAttr name="filterInner"  desc="filter_inner" type="ca_omci_uint32_t"/>
+        <tableAttr name="treatOutter"  desc="treat_out"    type="ca_omci_uint32_t"/>
+        <tableAttr name="treatInner"   desc="treat_inner"  type="ca_omci_uint32_t"/>
+    </table>
+    <table tableName="ca_omci_filter_outter_t">
+      <tableAttr name="condition" type="#ifdef CA_LITTLE_ENDIAN" />
+        <tableAttr name="pad:12"           type="ca_omci_uint32_t"/>
+        <tableAttr name="filterOutTpid:3"  type="ca_omci_uint32_t"/>
+        <tableAttr name="filterOutVid:13"  type="ca_omci_uint32_t"/>
+        <tableAttr name="filterOutPri:4"   type="ca_omci_uint32_t"/>
+      <tableAttr name="condition" type="#else" />
+        <tableAttr name="filterOutPri:4"   type="ca_omci_uint32_t"/>
+        <tableAttr name="filterOutVid:13"  type="ca_omci_uint32_t"/>
+        <tableAttr name="filterOutTpid:3"  type="ca_omci_uint32_t"/>
+        <tableAttr name="pad:12"           type="ca_omci_uint32_t"/>
+      <tableAttr name="condition" type="#endif" />
+    </table>
+    <table tableName="ca_omci_filter_inner_t">
+      <tableAttr name="condition" type="#ifdef CA_LITTLE_ENDIAN" />
+        <tableAttr name="filterEthType:4"  type="ca_omci_uint32_t"/>
+        <tableAttr name="pad:8"            type="ca_omci_uint32_t"/>
+        <tableAttr name="filterInnTpid:3"  type="ca_omci_uint32_t"/>
+        <tableAttr name="filterInnVid:13"  type="ca_omci_uint32_t"/>
+        <tableAttr name="filterInnPri:4"   type="ca_omci_uint32_t"/>
+      <tableAttr name="condition" type="#else" />
+        <tableAttr name="filterInnPri:4"   type="ca_omci_uint32_t"/>
+        <tableAttr name="filterInnVid:13"  type="ca_omci_uint32_t"/>
+        <tableAttr name="filterInnTpid:3"  type="ca_omci_uint32_t"/>
+        <tableAttr name="pad:8"            type="ca_omci_uint32_t"/>
+        <tableAttr name="filterEthType:4"  type="ca_omci_uint32_t"/>
+      <tableAttr name="condition" type="#endif" />
+    </table>
+    <table tableName="ca_omci_treat_outter_t">
+      <tableAttr name="condition" type="#ifdef CA_LITTLE_ENDIAN" />
+        <tableAttr name="treatOutTpid:3"    type="ca_omci_uint32_t"/>
+        <tableAttr name="treatOutVid:13"    type="ca_omci_uint32_t"/>
+        <tableAttr name="treatOutPri:4"     type="ca_omci_uint32_t"/>
+        <tableAttr name="pad:10"            type="ca_omci_uint32_t"/>
+        <tableAttr name="trearTag2Remove:2" type="ca_omci_uint32_t"/>
+      <tableAttr name="condition" type="#else" />
+        <tableAttr name="trearTag2Remove:2" type="ca_omci_uint32_t"/>
+        <tableAttr name="pad:10"            type="ca_omci_uint32_t"/>
+        <tableAttr name="treatOutPri:4"     type="ca_omci_uint32_t"/>
+        <tableAttr name="treatOutVid:13"    type="ca_omci_uint32_t"/>
+        <tableAttr name="treatOutTpid:3"    type="ca_omci_uint32_t"/>
+      <tableAttr name="condition" type="#endif" />
+    </table>
+    <table tableName="ca_omci_treat_inner_t">
+      <tableAttr name="condition" type="#ifdef CA_LITTLE_ENDIAN" />
+        <tableAttr name="treatInnTpid:3" type="ca_omci_uint32_t"/>
+        <tableAttr name="treatInnVid:13" type="ca_omci_uint32_t"/>
+        <tableAttr name="treatInnPri:4"  type="ca_omci_uint32_t"/>
+        <tableAttr name="pad:12"         type="ca_omci_uint32_t"/>
+      <tableAttr name="condition" type="#else" />
+        <tableAttr name="pad:12"         type="ca_omci_uint32_t"/>
+        <tableAttr name="treatInnPri:4"  type="ca_omci_uint32_t"/>
+        <tableAttr name="treatInnVid:13" type="ca_omci_uint32_t"/>
+        <tableAttr name="treatInnTpid:3" type="ca_omci_uint32_t"/>
+      <tableAttr name="condition" type="#endif" />
+    </table>
+</me>
+<me mename="onu_g"                meDescr="onug"              classid="256"   multipkt="1" action="get,set,reboot,test,synTime,alarmReport">
+  <attr attrName="vendor_id"       attrDescr="vendorId"         attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="OMCI_VENDOR_ID_LEN"/>
+  <attr attrName="version"         attrDescr="version"          attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="OMCI_VERSION_LEN"/>
+  <attr attrName="sn"              attrDescr="sn"               attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="OMCI_SN_LEN"/>
+  <attr attrName="traf_mng_option" attrDescr="trafficMngOption" attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="deprecated"      attrDescr="deprecated"       attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="battery_backup"  attrDescr="batteryBackup"    attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="admin"           attrDescr="admin"            attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="oper_state"      attrDescr="operState"        attrAction="RV" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="onu_surv_time"   attrDescr="onuSurvTime"      attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="loid"            attrDescr="loid"             attrAction="RV" attrDataType="ca_omci_uint8_t"  attrSize="OMCI_LOID_LEN"/>
+  <attr attrName="loid_pwd"        attrDescr="loidPwd"          attrAction="RV" attrDataType="ca_omci_uint8_t"  attrSize="OMCI_LOID_PW_LEN"/>
+  <attr attrName="cre_status"      attrDescr="creStatus"        attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="ext_tc_op"       attrDescr="extTcOp"          attrAction="R"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+    <enum enumName="traf_op">
+        <element name="pri"      value="0"/>
+        <element name="rate"     value="1"/>
+        <element name="pri_rate" value="2"/>
+    </enum>
+    <enum enumName="cre_st">
+        <element name="init"         value="0"/>
+        <element name="auth_success" value="1"/>
+        <element name="loid_err"     value="2"/>
+        <element name="pwd_err"      value="3"/>
+        <element name="dupli_loid"   value="4"/>
+    </enum>
+    <enum enumName="tc_op">
+        <element name="pon_id"        value="0x0001"/>
+        <element name="ploam_channel" value="0x0002"/>
+    </enum>
+</me>
+<me mename="onu2_g"               meDescr="onu2g"             classid="257"   multipkt="1" action="get,set">
+  <attr attrName="eq_id"                 attrDescr="eqId"                 attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="OMCI_EQID_LEN"/>
+  <attr attrName="omcc_ver"              attrDescr="omccVer"              attrAction="RV"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="verdor_prod_code"      attrDescr="vendorProductCode"    attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="sec_cap"               attrDescr="securityCapab"        attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="sec_mode"              attrDescr="securityMode"         attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="total_pq_num"          attrDescr="totalPqNum"           attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="total_traff_sched_num" attrDescr="totalTrafficSchedNum" attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="deprecated"            attrDescr="deprecated"           attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="total_gem_num"         attrDescr="totalGemNum"          attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="sys_up_time"           attrDescr="sysUpTime"            attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="connect_cap"           attrDescr="connectCap"           attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="curr_con_mode"         attrDescr="currConnectMode"      attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="qos_cfg_flex"          attrDescr="qosCfgFlex"           attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="pq_scale_factor"       attrDescr="pqScaleFactor"        attrAction="RW"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+    <enum enumName="omcc_ver">
+        <element name="984_04"        value="0x80"/>
+        <element name="984_04_amd1"   value="0x81"/>
+        <element name="984_04_amd2"   value="0x82"/>
+        <element name="984_04_amd3"   value="0x83"/>
+        <element name="984_08"        value="0x84"/>
+        <element name="984_08_amd1"   value="0x85"/>
+        <element name="984_08_amd2_b" value="0x86"/>
+        <element name="984_08_amd2_e" value="0x96"/>
+        <element name="988_b"         value="0xa0"/>
+        <element name="988_amd1_b"    value="0xa1"/>
+        <element name="988_amd2_b"    value="0xa2"/>
+        <element name="988_12_b"      value="0xa3"/>
+        <element name="988_e"         value="0xb0"/>
+        <element name="988_amd1_e"    value="0xb1"/>
+        <element name="988_amd2_e"    value="0xb2"/>
+        <element name="988_2013"      value="0xb3"/>
+        <element name="988_2014"      value="0xb4"/>
+    </enum>
+    <enum enumName="connect_bit">
+        <element name="n1"   value="0x0001"/>
+        <element name="1m"   value="0x0002"/>
+        <element name="1p"   value="0x0004"/>
+        <element name="nm"   value="0x0008"/>
+        <element name="1mp"  value="0x0010"/>
+        <element name="np"   value="0x0020"/>
+        <element name="nmp"  value="0x0040"/>
+    </enum>
+    <enum enumName="connect_mode">
+        <element name="default" value="0"/>
+        <element name="n1"      value="1"/>
+        <element name="1m"      value="2"/>
+        <element name="1p"      value="3"/>
+        <element name="nm"      value="4"/>
+        <element name="1mp"     value="5"/>
+        <element name="np"      value="6"/>
+        <element name="nmp"     value="7"/>
+    </enum>
+    <enum enumName="qos_cfg">
+        <element name="pq_tcont_uni"       value="0x0001"/>
+        <element name="pq_traff_sched"     value="0x0002"/>
+        <element name="traff_sched_tcont"  value="0x0004"/>
+        <element name="traff_sched_policy" value="0x0008"/>
+        <element name="tcont_policy"       value="0x0010"/>
+        <element name="pq_priority"        value="0x0020"/>
+    </enum>
+</me>
+<me mename="tcont"                meDescr="tcont"             classid="262"   multipkt="0" action="get,set">
+  <attr attrName="alloc_id"   attrDescr="allocId"     attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="deprecated" attrDescr="deprecated"  attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="policy"     attrDescr="policy"      attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+</me>
+<me mename="ani_g"                meDescr="anig"              classid="263"   multipkt="0" action="get,set,test,alarmReport">
+  <attr attrName="sr_ind"             attrDescr="srInd"           attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="total_tcont_num"    attrDescr="totalTcontNum"   attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="gem_block_len"      attrDescr="gemBlockLen"     attrAction="RW"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="pb_dba_report"      attrDescr="pbDbaReport"     attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="deprecated"         attrDescr="deprecated"      attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="sf_thres"           attrDescr="sfThres"         attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="sd_thres"           attrDescr="sdThres"        attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="arc"                attrDescr="arc"             attrAction="RWV" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="arc_interval"       attrDescr="arcInterval"     attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="optical_level"      attrDescr="opticalLevel"    attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="low_opt_thres"      attrDescr="lowOptThres"     attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="up_opt_thres"       attrDescr="upOptThres"      attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="onu_res_time"       attrDescr="onuResTime"      attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="tx_opt_level"       attrDescr="txOptLevel"      attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="low_tx_power_thres" attrDescr="lowTxPowerThres" attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="up_tx_power_thres"  attrDescr="upTxPowerThres"  attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+    <enum enumName="piggy_dba_report">
+        <element name="mode0"    value="0"/>
+        <element name="mode01"   value="1"/>
+        <element name="not_supp" value="4"/>
+    </enum>
+</me>
+<me mename="uni_g"                meDescr="unig"              classid="264"   multipkt="0" action="get,set">
+  <attr attrName="deprecated"      attrDescr="deprecated"   attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="admin"           attrDescr="admin"        attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="mng_cap"         attrDescr="mngCap"       attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="non_omci_mng_id" attrDescr="nonOmciMngId" attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="relay_agt_op"    attrDescr="relayAgtOp"   attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+      <enum enumName="mng_cap">
+        <element name="omci"     value="0"/>
+        <element name="non_omci" value="1"/>
+        <element name="both"     value="2"/>
+    </enum>
+</me>
+<me mename="gem_iwtp"             meDescr="gemIwtp"           classid="266"   multipkt="0" action="create,delete,get,set,alarmReport">
+  <attr attrName="gem_net_ctp_point" attrDescr="gemNetCtpPoint" attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="iw_option"         attrDescr="iwOption"       attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="srv_prof_point"    attrDescr="srvProfPoint"   attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="iwtp_point"        attrDescr="iwtpPoint"      attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="pptp_cnt"          attrDescr="pptpCnt"        attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="oper_state"        attrDescr="operState"      attrAction="RV"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="gal_prof_point"    attrDescr="galProfPoint"   attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="gal_loopback_cfg"  attrDescr="galLoopbackCfg" attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+    <enum enumName="iw_option">
+        <element name="tdm"          value="0"/>
+        <element name="mac_brg_lan"  value="1"/>
+        <element name="video"        value="4"/>
+        <element name="8021p"        value="5"/>
+        <element name="ds_broadcast" value="6"/>
+        <element name="mpls_pw_tdm"  value="7"/>
+    </enum>
+    <enum enumName="gal_loopback">
+        <element name="no"         value="0"/>
+        <element name="ds_traffic" value="1"/>
+    </enum>
+</me>
+<me mename="gemport_pm"           meDescr="gemportPm"         classid="267"   multipkt="0" action="create,delete,get,set,GetCurrData">
+  <attr attrName="interval_end_time" attrDescr="intervalEndT"   attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="thres_id"          attrDescr="thresId"        attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="lost_pkt"          attrDescr="lostPkt"        attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="misinserted_pkt"   attrDescr="misinsertedPkt" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_pkt"            attrDescr="rxPkt"          attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="5"/>
+  <attr attrName="rx_block"          attrDescr="rxBlock"        attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="5"/>
+  <attr attrName="tx_block"          attrDescr="txBlock"        attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="5"/>
+  <attr attrName="impaired_block"    attrDescr="impairedBlock"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+</me>
+<me mename="gem_net_ctp"          meDescr="gemNetCtp"         classid="268"   multipkt="0" action="create,delete,get,set,alarmReport">
+  <attr attrName="port_id"            attrDescr="portId"          attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="tcont_point"        attrDescr="tcontPoint"      attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="direction"          attrDescr="direction"       attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="us_traf_mng_point"  attrDescr="usTrafMngPoint"  attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="us_traf_desc_point" attrDescr="usTrafDescPoint" attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="uni_cnt"            attrDescr="uniCnt"          attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="ds_pq_point"        attrDescr="dsPqPoint"       attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="encrypt_state"      attrDescr="encryptState"    attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="ds_traf_desc_point" attrDescr="dsTrafMngPoint"  attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="encrypt_key_ring"   attrDescr="encryptKeyRing"  attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+    <enum enumName="dir">
+        <element name="us"       value="1"/>
+        <element name="ds"       value="2"/>
+        <element name="bidirect" value="3"/>
+    </enum>
+    <enum enumName="encrypt">
+        <element name="no"          value="0"/>
+        <element name="unicast_bi"  value="1"/>
+        <element name="broad_multi" value="2"/>
+        <element name="unicast_ds"  value="3"/>
+    </enum>
+</me>
+<me mename="gal_eth_prof"         meDescr="galEthProf"        classid="272"   multipkt="0" action="create,delete,get,set">
+  <attr attrName="max_gem_payload" attrDescr="maxGemPayload" attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+</me>
+<me mename="threshold1"           meDescr="threshold1"        classid="273"   multipkt="0" action="create,delete,get,set,alarmReport">
+  <attr attrName="thres_val1"  attrDescr="thresVal1"  attrAction="RWS" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="thres_val2"  attrDescr="thresVal2"  attrAction="RWS" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="thres_val3"  attrDescr="thresVal3"  attrAction="RWS" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="thres_val4"  attrDescr="thresVal4"  attrAction="RWS" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="thres_val5"  attrDescr="thresVal5"  attrAction="RWS" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="thres_val6"  attrDescr="thresVal6"  attrAction="RWS" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="thres_val7"  attrDescr="thresVal7"  attrAction="RWS" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+</me>
+<me mename="threshold2"           meDescr="threshold2"        classid="274"   multipkt="0" action="create,delete,get,set,alarmReport">
+  <attr attrName="thres_val8"  attrDescr="thresVal8"  attrAction="RWS" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="thres_val9"  attrDescr="thresVal9"  attrAction="RWS" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="thres_val10" attrDescr="thresVal10" attrAction="RWS" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="thres_val11" attrDescr="thresVal11" attrAction="RWS" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="thres_val12" attrDescr="thresVal12" attrAction="RWS" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="thres_val13" attrDescr="thresVal13" attrAction="RWS" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="thres_val14" attrDescr="thresVal14" attrAction="RWS" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+</me>
+<me mename="gal_eth_pm"           meDescr="galEthPm"          classid="276"   multipkt="0" action="create,delete,get,set,GetCurrData">
+  <attr attrName="interval_end_time" attrDescr="intervalEndT" attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="thres_id"          attrDescr="thresId"      attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="discard_frame"     attrDescr="discardFrame" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="tx_xgem_frame"     attrDescr="txXgemFrame"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_xgem_frame"     attrDescr="rxXgemFrame"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+</me>
+<me mename="pri_queue"            meDescr="priQueue"          classid="277"   multipkt="1" action="get,set,alarmReport">
+  <attr attrName="queue_cfg_opt"           attrDescr="queueCfgOpt"          attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="max_queue_size"          attrDescr="maxQueueSize"         attrAction="R"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="alloc_queue_size"        attrDescr="allocQueueSize"       attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="dis_cnt_reset_itv"       attrDescr="disCntResetItv"       attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="buff_overflow_dis_thres" attrDescr="buffOverflowDisThres" attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="relate_port"             attrDescr="relatePort"           attrAction="RW" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="traf_sched_point"        attrDescr="trafSchedPoint"       attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="weight"                  attrDescr="weight"               attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="bp_oper"                 attrDescr="bpOper"               attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="bp_time"                 attrDescr="bpTime"               attrAction="RW" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="bp_occur_queue_thres"    attrDescr="bpOccurQueueThres"    attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="bp_clear_queue_thres"    attrDescr="bpClearQueueThres"    attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="pkt_drop_queue_thres"    attrDescr="pktDropQueueThres"    attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="4"/>
+  <attr attrName="pkt_drop_max_p"          attrDescr="pkgDropMaxp"          attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="2"/>
+  <attr attrName="queue_drop_w_q"          attrDescr="queueDropWQ"          attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="color_mark"              attrDescr="colorMark"            attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+    <enum enumName="color_mark">
+        <element name="no"        value="0"/>
+        <element name="internal"  value="1"/>
+        <element name="dei"       value="2"/>
+        <element name="pcp_8p0d"  value="3"/>
+        <element name="pcp_7p1d"  value="4"/>
+        <element name="pcp_6p2d"  value="5"/>
+        <element name="pcp_5p3d"  value="6"/>
+        <element name="dscp_af"   value="7"/>
+    </enum>
+</me>
+<me mename="traffic_scheg"        meDescr="trafficScheduler"  classid="278"   multipkt="0" action="get,set">
+  <attr attrName="tcont_point"      attrDescr="tcontPoint"     attrAction="RW"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="traf_sched_point" attrDescr="trafSchedPoint" attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="policy"           attrDescr="policy"         attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="pri_weight"       attrDescr="priWeight"      attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+</me>
+<me mename="protect_data"         meDescr="protectData"       classid="279"   multipkt="0" action="create,delete,get,set">
+  <attr attrName="work_anig_point"   attrDescr="workAnigPoint"     attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="prot_anig_point"   attrDescr="protAnigPoint"     attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="prot_type"         attrDescr="protType"          attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="revertive_ind"     attrDescr="revertive_ind"     attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="wait_restore_time" attrDescr="wait_restore_time" attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="sw_guard_time"     attrDescr="sw_guard_time"     attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+    <enum enumName="prot_type">
+        <element name="plus"          value="0"/>
+        <element name="no_extra_traf" value="1"/>
+        <element name="extra_traf"    value="2"/>
+    </enum>
+</me>
+<me mename="traffic_descript"     meDescr="trafDesc"          classid="280"   multipkt="0" action="create,delete,get,set">
+  <attr attrName="cir"            attrDescr="cir"          attrAction="RWS" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="pir"            attrDescr="pir"          attrAction="RWS" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="cbs"            attrDescr="cbs"          attrAction="RWS" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="pbs"            attrDescr="pbs"          attrAction="RWS" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="color_mode"     attrDescr="colorMode"    attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="ing_color_mark" attrDescr="ingColorMark" attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="egr_color_mark" attrDescr="egrColorMark" attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="meter_type"     attrDescr="meterType"    attrAction="RS"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+</me>
+<me mename="multi_gem_iwtp"       meDescr="multiGemIwtp"      classid="281"   multipkt="0" action="create,delete,get,Getnext,set,tableSet">
+  <attr attrName="gem_net_ctp_point"   attrDescr="gemNetCtpPoint"   attrAction="RWS" attrDataType="ca_omci_uint16_t"              attrSize="0"/>
+  <attr attrName="iw_option"           attrDescr="iwOption"         attrAction="RWS" attrDataType="ca_omci_uint8_t"               attrSize="0"/>
+  <attr attrName="srv_prof_point"      attrDescr="srvProfPoint"     attrAction="RWS" attrDataType="ca_omci_uint16_t"              attrSize="0"/>
+  <attr attrName="not_used1"           attrDescr="notUsed1"         attrAction="RWS" attrDataType="ca_omci_uint16_t"              attrSize="0"/>
+  <attr attrName="oper_state"          attrDescr="operState"        attrAction="RV"  attrDataType="ca_omci_uint8_t"               attrSize="0"/>
+  <attr attrName="gal_prof_point"      attrDescr="galProfPoint"     attrAction="RWS" attrDataType="ca_omci_uint16_t"              attrSize="0"/>
+  <attr attrName="not_used2"           attrDescr="notUsed2"         attrAction="RWS" attrDataType="ca_omci_uint8_t"               attrSize="0"/>
+  <attr attrName="ipv4_multi_addr_tbl" attrDescr="ipv4MultiAddrTbl" attrAction="RWT" attrDataType="ca_omci_ipv4_multi_addr_tbl_t" attrSize="10"/>
+  <attr attrName="ipv6_multi_addr_tbl" attrDescr="ipv6MultiAddrTbl" attrAction="RWT" attrDataType="ca_omci_ipv6_multi_addr_tbl_t" attrSize="10"/>
+    <enum enumName="iw_option">
+        <element name="dont_care"    value="0"/>
+        <element name="mac_brg_lan"  value="1"/>
+        <element name="8021p"        value="5"/>
+    </enum>
+    <table tableName="ca_omci_ipv4_multi_addr_tbl_t">
+        <tableAttr name="gemId"       desc="gem_id"      type="ca_omci_uint16_t"/>
+        <tableAttr name="sndKey"      desc="snd_key"     type="ca_omci_uint16_t"/>
+        <tableAttr name="ipAddrStart" desc="ip_addr_st"  type="ca_omci_uint32_t"/>
+        <tableAttr name="ipAddrEnd"   desc="ip_addr_end" type="ca_omci_uint32_t"/>
+    </table>
+    <table tableName="ca_omci_ipv6_multi_addr_tbl_t">
+        <tableAttr name="gemId"             desc="gem_id"              type="ca_omci_uint16_t"/>
+        <tableAttr name="sndKey"            desc="snd_key"             type="ca_omci_uint16_t"/>
+        <tableAttr name="lsbIpDstAddrStart" desc="lsb_ip_dst_addr_st"  type="ca_omci_uint32_t"/>
+        <tableAttr name="lsbIpDstAddrEnd"   desc="lsb_ip_dst_addr_end" type="ca_omci_uint32_t"/>
+        <tableAttr name="msbIpDstAddr"      desc="msb_ip_dst_addr"     type="ca_omci_uint8_t" size="OMCI_IPV6_LEAD_LEN"/>
+    </table>
+</me>
+<me mename="omci"                 meDescr="omci"              classid="287"   multipkt="0" action="get,Getnext,unMibUpload">
+  <attr attrName="me_type_tbl"    attrDescr="meTypeTbl"    attrAction="RT" attrDataType="ca_omci_uint16_t" attrSize="65536"/>
+  <attr attrName="msg_type_tbl"   attrDescr="msgTypeTbl"   attrAction="RT" attrDataType="ca_omci_uint8_t"  attrSize="23"/>
+</me>
+<me mename="dot1x_port_ext_pkg"   meDescr="dot1xPortExtPkg"   classid="290"   multipkt="0" action="get,set">
+  <attr attrName="dot1x_enable"     attrDescr="dot1xEnable"    attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="act_reg"          attrDescr="actReg"         attrAction="W"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="auth_pae_st"      attrDescr="authPaeSt"      attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="backend_auth_st"  attrDescr="backendAuthSt"  attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="admin_ctl_dir"    attrDescr="adminCtlDir"    attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="oper_ctl_dir"     attrDescr="operCtlDir"     attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="auth_ctl_port_st" attrDescr="authCtlPortSt"  attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="quiet_period"     attrDescr="quietPeriod"    attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="srv_timeo_period" attrDescr="srvTimeoPeriod" attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="re_auth_period"   attrDescr="reAuthPeriod"   attrAction="R"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="re_auth_enabled"  attrDescr="reAuthEnabled"  attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="key_trans_enable" attrDescr="keyTransEnable" attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+    <enum enumName="auth_pae_st">
+        <element name="init"            value="0"/>
+        <element name="disconnect"      value="1"/>
+        <element name="connecting"      value="2"/>
+        <element name="authenticating"  value="3"/>
+        <element name="authenticated"   value="4"/>
+        <element name="aborting"        value="5"/>
+        <element name="held"            value="6"/>
+        <element name="force_auth"      value="7"/>
+        <element name="force_unauth"    value="8"/>
+        <element name="restart"         value="9"/>
+    </enum>
+    <enum enumName="backend_auth_st">
+        <element name="request"  value="0"/>
+        <element name="response" value="1"/>
+        <element name="success"  value="2"/>
+        <element name="fail"     value="3"/>
+        <element name="timeout"  value="4"/>
+        <element name="idle"     value="5"/>
+        <element name="init"     value="6"/>
+        <element name="ignore"   value="7"/>
+    </enum>
+</me>
+<me mename="dot1x_pm_his"         meDescr="dot1xPmHis"        classid="292"   multipkt="0" action="create,delete,get,set,GetCurrData">
+  <attr attrName="interval_end_time"     attrDescr="intervalEndT"       attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="thres_id"              attrDescr="thresId"            attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="rx_eapol_frame"        attrDescr="rxEapolFrame"       attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="tx_eapol_frame"        attrDescr="txEapolFrame"       attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_eapol_start_frame"  attrDescr="rxEapolStartFrame"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_eapol_logoff_frame" attrDescr="rxEapolLogoffFrame" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_eapol_inval_frame"  attrDescr="rxEapolInvalFrame"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_eap_resp_id_frame"  attrDescr="rxEapRespIdFrame"   attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_eap_resp_frame"     attrDescr="rxEapRespFrame"     attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="tx_eap_init_req_frame" attrDescr="txEapInitReqFrame"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="tx_eap_req_frame"      attrDescr="txEapReqFrame"      attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_eap_len_err_frame"  attrDescr="rxEapLenErrFrame"   attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="eap_success_frame"     attrDescr="eapSuccessFrame"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="eap_failure_frame"     attrDescr="eapFailureFrame"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+</me>
+<me mename="eth_pm_his3"          meDescr="ethPmHis3"         classid="296"   multipkt="0" action="create,delete,get,set,GetCurrData">
+  <attr attrName="interval_end_time" attrDescr="intervalEndT"    attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="thres_id"          attrDescr="thresId"         attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="drop_event"        attrDescr="dropEvent"       attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="octets"            attrDescr="octets"          attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="packets"           attrDescr="packets"         attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="broadcast_packet"  attrDescr="broadcastPacket" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="muticast_packet"   attrDescr="muticastPacket"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="undersize_packet"  attrDescr="undersizePacket" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="fragment"          attrDescr="fragment"        attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="jabber"            attrDescr="jabber"          attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="packet_oct_64"     attrDescr="packetOct64"     attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="packet_oct_127"    attrDescr="packetOct127"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="packet_oct_255"    attrDescr="packetOct255"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="packet_oct_511"    attrDescr="packetOct511"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="packet_oct_1023"   attrDescr="packetOct1023"   attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="packet_oct_1518"   attrDescr="packetOct1518"   attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+</me>
+<me mename="port_map_pkg"         meDescr="portMapPkg"        classid="297"   multipkt="1" action="get,Getnext">
+  <attr attrName="max_ports"       attrDescr="maxPorts"      attrAction="R"  attrDataType="ca_omci_uint8_t"         attrSize="0"/>
+  <attr attrName="port_list1"      attrDescr="portList1"     attrAction="R"  attrDataType="ca_omci_uint8_t"         attrSize="OMCI_PORT_LIST_LEN"/>
+  <attr attrName="port_list2"      attrDescr="portList2"     attrAction="R"  attrDataType="ca_omci_uint8_t"         attrSize="OMCI_PORT_LIST_LEN"/>
+  <attr attrName="port_list3"      attrDescr="portList3"     attrAction="R"  attrDataType="ca_omci_uint8_t"         attrSize="OMCI_PORT_LIST_LEN"/>
+  <attr attrName="port_list4"      attrDescr="portList4"     attrAction="R"  attrDataType="ca_omci_uint8_t"         attrSize="OMCI_PORT_LIST_LEN"/>
+  <attr attrName="port_list5"      attrDescr="portList5"     attrAction="R"  attrDataType="ca_omci_uint8_t"         attrSize="OMCI_PORT_LIST_LEN"/>
+  <attr attrName="port_list6"      attrDescr="portList6"     attrAction="R"  attrDataType="ca_omci_uint8_t"         attrSize="OMCI_PORT_LIST_LEN"/>
+  <attr attrName="port_list7"      attrDescr="portList7"     attrAction="R"  attrDataType="ca_omci_uint8_t"         attrSize="OMCI_PORT_LIST_LEN"/>
+  <attr attrName="port_list8"      attrDescr="portList8"     attrAction="R"  attrDataType="ca_omci_uint8_t"         attrSize="OMCI_PORT_LIST_LEN"/>
+  <attr attrName="comb_port_table" attrDescr="combPortTable" attrAction="RT" attrDataType="ca_omci_comb_port_tbl_t" attrSize="16"/>
+    <table tableName="ca_omci_comb_port_tbl_t">
+        <tableAttr name="phyPort"  type="ca_omci_uint8_t"/>
+        <tableAttr name="eqType1"  type="ca_omci_uint16_t"/>
+        <tableAttr name="eqType2"  type="ca_omci_uint16_t"/>
+        <tableAttr name="eqType3"  type="ca_omci_uint16_t"/>
+        <tableAttr name="eqType4"  type="ca_omci_uint16_t"/>
+        <tableAttr name="eqType5"  type="ca_omci_uint16_t"/>
+        <tableAttr name="eqType6"  type="ca_omci_uint16_t"/>
+        <tableAttr name="eqType7"  type="ca_omci_uint16_t"/>
+        <tableAttr name="eqType8"  type="ca_omci_uint16_t"/>
+        <tableAttr name="eqType9"  type="ca_omci_uint16_t"/>
+        <tableAttr name="eqType10" type="ca_omci_uint16_t"/>
+        <tableAttr name="eqType11" type="ca_omci_uint16_t"/>
+        <tableAttr name="eqType12" type="ca_omci_uint16_t"/>
+    </table>
+</me>
+<me mename="dot1_rate_limiter"    meDescr="dot1RateLimit"     classid="298"   multipkt="0" action="create,delete,get,set">
+  <attr attrName="parent_me_point"             attrDescr="parentMePoint"        attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="tp_type"                     attrDescr="tpType"               attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="us_unicast_flood_rate_point" attrDescr="usUnicastFlRatePoint" attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="us_broadcast_rate_point"     attrDescr="usBcRatePoint"        attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="us_multi_payload_rate_point" attrDescr="usMultiPlRatePoint"   attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+    <enum enumName="tp_type">
+        <element name="mac_srv" value="1"/>
+        <element name="8021p"   value="2"/>
+    </enum>
+</me>
+<me mename="dot1ag_domain"        meDescr="dot1agDomain"      classid="299"   multipkt="0" action="create,delete,get,set">
+  <attr attrName="md_level"             attrDescr="mdLevel"            attrAction="RWS" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="md_name_fmt"          attrDescr="mdNameFmt"          attrAction="RWS" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="md_name_1"            attrDescr="mdName1"            attrAction="RW"  attrDataType="ca_omci_uint8_t" attrSize="OMCI_MD_NAME_LEN"/>
+  <attr attrName="md_name_2"            attrDescr="mdName2"            attrAction="RW"  attrDataType="ca_omci_uint8_t" attrSize="OMCI_MD_NAME_LEN"/>
+  <attr attrName="mhf_creation"         attrDescr="mhfCreate"          attrAction="RWS" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="sender_id_permission" attrDescr="senderIdPermission" attrAction="RWS" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+    <enum enumName="name_fmt">
+        <element name="none"     value="1"/>
+        <element name="dns"      value="2"/>
+        <element name="mac_unit" value="3"/>
+        <element name="string"   value="4"/>
+        <element name="icc"      value="32"/>
+    </enum>
+</me>
+<me mename="dot1ag_asso"          meDescr="dot1agAsso"        classid="300"   multipkt="0" action="create,delete,get,set">
+  <attr attrName="md_point"             attrDescr="md_point"           attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="short_ma_name_fmt"    attrDescr="shortMaNameFmt"     attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="short_ma_name_1"      attrDescr="shortMaName1"       attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="OMCI_MD_NAME_LEN"/>
+  <attr attrName="short_ma_name_2"      attrDescr="shortMaName2"       attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="OMCI_MD_NAME_LEN"/>
+  <attr attrName="ccm_interval"         attrDescr="ccmInterval"        attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="asso_vlans"           attrDescr="assoVlans"          attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="OMCI_VLAN_LIST_LEN"/>
+  <attr attrName="mhf_creation"         attrDescr="mhfCreate"          attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="sender_id_permission" attrDescr="senderIdPermission" attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+    <enum enumName="name_fmt">
+        <element name="primary_vid" value="1"/>
+        <element name="string"      value="2"/>
+        <element name="2octet_int"  value="3"/>
+        <element name="vpn_id"      value="4"/>
+    </enum>
+    <enum enumName="ccm">
+        <element name="disable"  value="0"/>
+        <element name="3dot33ms" value="1"/>
+        <element name="10ms"     value="2"/>
+        <element name="100ms"    value="3"/>
+        <element name="1s"       value="4"/>
+        <element name="10s"      value="5"/>
+        <element name="1min"     value="6"/>
+        <element name="10min"    value="7"/>
+    </enum>
+</me>
+<me mename="dot1ag_md_level"      meDescr="dot1agMdLevel"     classid="301"   multipkt="0" action="get,Getnext,set,tableSet">
+  <attr attrName="l2_type"                 attrDescr="l2Type"               attrAction="R"   attrDataType="ca_omci_uint8_t"            attrSize="0"/>
+  <attr attrName="catchall_level"          attrDescr="catchallLevel"        attrAction="RW"  attrDataType="ca_omci_uint8_t"            attrSize="0"/>
+  <attr attrName="catchall_mhf_creation"   attrDescr="catchallMhfCreate"    attrAction="RW"  attrDataType="ca_omci_uint8_t"            attrSize="0"/>
+  <attr attrName="catchall_sender_id_perm" attrDescr="catchallSenderIdPerm" attrAction="RW"  attrDataType="ca_omci_uint8_t"            attrSize="0"/>
+  <attr attrName="def_md_level_table"      attrDescr="defMdLevelTbl"        attrAction="RWT" attrDataType="ca_omci_def_md_level_tbl_t" attrSize="24"/>
+    <table tableName="ca_omci_def_md_level_tbl_t">
+        <tableAttr name="primaryVid"  desc="pri_vid"       type="ca_omci_uint16_t"/>
+        <tableAttr name="tblCtl"      desc="tbl_ctl"       type="ca_omci_uint8_t"/>
+        <tableAttr name="status"      desc="status"        type="ca_omci_uint8_t"/>
+        <tableAttr name="level"       desc="level"         type="ca_omci_uint8_t"/>
+        <tableAttr name="mhfCreate"   desc="mhf_create"    type="ca_omci_uint8_t"/>
+        <tableAttr name="senderIdPer" desc="sender_id_per" type="ca_omci_uint8_t"/>
+        <tableAttr name="vlanList"    desc="vlan_list"     type="ca_omci_uint8_t" size="OMCI_VLAN_LIST_LEN"/>
+    </table>
+</me>
+<me mename="dot1ag_mep"           meDescr="dot1agMep"         classid="302"   multipkt="0" action="create,delete,get,set,test,alarmReport">
+  <attr attrName="l2_entity_point"      attrDescr="l2EntityPoint"   attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="l2_type"              attrDescr="l2Type"          attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="ma_point"             attrDescr="maPoint"         attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="mep_id"               attrDescr="mepId"           attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="mep_ctl"              attrDescr="mepCtl"          attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="pri_vlan"             attrDescr="priVlan"         attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="admin"                attrDescr="admin"           attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="ccm_ltm_pri"          attrDescr="ccmLtmPri"       attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="egress_id"            attrDescr="egressId"        attrAction="RWS" attrDataType="ca_omci_uint64_t" attrSize="0"/>
+  <attr attrName="peer_mep_ids"         attrDescr="peerMepIds"      attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="24"/>
+  <attr attrName="eth_ais_ctl"          attrDescr="ethAisCtl"       attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="fault_alarm_thres"    attrDescr="faultAlarmThres" attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="am_declear_soak_time" attrDescr="amDeclearSoakT"  attrAction="RW"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="am_clear_soak_time"   attrDescr="amClearAoakT"    attrAction="RW"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+    <enum enumName="mep_ctl">
+        <element name="ccms"     value="0x02"/>
+        <element name="server"   value="0x04"/>
+        <element name="eth_ais"  value="0x08"/>
+        <element name="dir_same" value="0x10"/>
+    </enum>
+</me>
+<me mename="dot1ag_mep_st"        meDescr="dot1agMepSt"       classid="303"   multipkt="0" action="get,Getnext,unMibUpload">
+  <attr attrName="mep_mac_addr"           attrDescr="mepMacAddr"       attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="OMCI_MAC_ADDR_LEN"/>
+  <attr attrName="fault_noti_gene_st"     attrDescr="faultNotiGenSt"   attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="hi_pri_defect_observe"  attrDescr="hiPriDefectObs"   attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="curr_defect"            attrDescr="currDefect"       attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="last_rx_err_ccm_table"  attrDescr="lastRxErrCcmTbl"  attrAction="RT" attrDataType="ca_omci_uint8_t"  attrSize="OMCI_CCM_TABLE_LEN"/>
+  <attr attrName="last_rx_xcon_ccm_table" attrDescr="lastRxCconCcmTbl" attrAction="RT" attrDataType="ca_omci_uint8_t"  attrSize="OMCI_CCM_TABLE_LEN"/>
+  <attr attrName="oos_ccm_cnt"            attrDescr="oosCcmCnt"        attrAction="R"  attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="ccm_tx_cnt"             attrDescr="ccmTxCnt"         attrAction="R"  attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="unexp_ltr_cnt"          attrDescr="unexpLtrCnt"      attrAction="R"  attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="lbr_tx_cnt"             attrDescr="lbrTxCnt"         attrAction="R"  attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="next_lpb_trans_id"      attrDescr="nextLpbTransId"   attrAction="R"  attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="next_link_trans_id"     attrDescr="nextLinkTransId"  attrAction="R"  attrDataType="ca_omci_uint32_t" attrSize="0"/>
+</me>
+<me mename="dot1ag_mep_ccm"       meDescr="dot1agMepCcm"      classid="304"   multipkt="0" action="get,Getnext,unMibUpload">
+  <attr attrName="rmep_db_tbl_1"  attrDescr="rmepDbTbl1"  attrAction="RT" attrDataType="ca_omci_rmep_db_tbl_t" attrSize="OMCI_RMEP_TABLE_NUM"/>
+  <attr attrName="rmep_db_tbl_2"  attrDescr="rmepDbTbl2"  attrAction="RT" attrDataType="ca_omci_rmep_db_tbl_t" attrSize="OMCI_RMEP_TABLE_NUM"/>
+  <attr attrName="rmep_db_tbl_3"  attrDescr="rmepDbTbl3"  attrAction="RT" attrDataType="ca_omci_rmep_db_tbl_t" attrSize="OMCI_RMEP_TABLE_NUM"/>
+  <attr attrName="rmep_db_tbl_4"  attrDescr="rmepDbTbl4"  attrAction="RT" attrDataType="ca_omci_rmep_db_tbl_t" attrSize="OMCI_RMEP_TABLE_NUM"/>
+  <attr attrName="rmep_db_tbl_5"  attrDescr="rmepDbTbl5"  attrAction="RT" attrDataType="ca_omci_rmep_db_tbl_t" attrSize="OMCI_RMEP_TABLE_NUM"/>
+  <attr attrName="rmep_db_tbl_6"  attrDescr="rmepDbTbl6"  attrAction="RT" attrDataType="ca_omci_rmep_db_tbl_t" attrSize="OMCI_RMEP_TABLE_NUM"/>
+  <attr attrName="rmep_db_tbl_7"  attrDescr="rmepDbTbl7"  attrAction="RT" attrDataType="ca_omci_rmep_db_tbl_t" attrSize="OMCI_RMEP_TABLE_NUM"/>
+  <attr attrName="rmep_db_tbl_8"  attrDescr="rmepDbTbl8"  attrAction="RT" attrDataType="ca_omci_rmep_db_tbl_t" attrSize="OMCI_RMEP_TABLE_NUM"/>
+  <attr attrName="rmep_db_tbl_9"  attrDescr="rmepDbTbl9"  attrAction="RT" attrDataType="ca_omci_rmep_db_tbl_t" attrSize="OMCI_RMEP_TABLE_NUM"/>
+  <attr attrName="rmep_db_tbl_10" attrDescr="rmepDbTbl10" attrAction="RT" attrDataType="ca_omci_rmep_db_tbl_t" attrSize="OMCI_RMEP_TABLE_NUM"/>
+  <attr attrName="rmep_db_tbl_11" attrDescr="rmepDbTbl11" attrAction="RT" attrDataType="ca_omci_rmep_db_tbl_t" attrSize="OMCI_RMEP_TABLE_NUM"/>
+  <attr attrName="rmep_db_tbl_12" attrDescr="rmepDbTbl12" attrAction="RT" attrDataType="ca_omci_rmep_db_tbl_t" attrSize="OMCI_RMEP_TABLE_NUM"/>
+    <table tableName="ca_omci_rmep_db_tbl_t">
+        <tableAttr name="rmepId"      type="ca_omci_uint16_t"/>
+        <tableAttr name="rmepSt"      type="ca_omci_uint8_t"/>
+        <tableAttr name="failOkTime"  type="ca_omci_uint32_t"/>
+        <tableAttr name="macAddr"     type="ca_omci_uint8_t" size="OMCI_MAC_ADDR_LEN"/>
+        <tableAttr name="rdi"         type="ca_omci_uint8_t"/>
+        <tableAttr name="portSt"      type="ca_omci_uint8_t"/>
+        <tableAttr name="ifSt"        type="ca_omci_uint8_t"/>
+        <tableAttr name="senderIdTlv" type="ca_omci_uint8_t" size="24"/>
+    </table>
+</me>
+<me mename="dot1ag_cfm"           meDescr="dot1agCfm"         classid="305"   multipkt="0" action="get,Getnext">
+  <attr attrName="l2_type"          attrDescr="l2Type"       attrAction="R"   attrDataType="ca_omci_uint8_t"        attrSize="0"/>
+  <attr attrName="mp_st_tbl"        attrDescr="mpStTbl"       attrAction="RT"  attrDataType="ca_omci_mp_st_tbl_t"    attrSize="16"/>
+  <attr attrName="cfg_err_list_tbl" attrDescr="cfgErrListTbl" attrAction="RVT" attrDataType="ca_omci_cfg_err_list_t" attrSize="16"/>
+    <table tableName="ca_omci_mp_st_tbl_t">
+        <tableAttr name="portId"    type="ca_omci_uint16_t"/>
+        <tableAttr name="level"     type="ca_omci_uint8_t"/>
+        <tableAttr name="direction" type="ca_omci_uint8_t"/>
+        <tableAttr name="vlanId"    type="ca_omci_uint16_t"/>
+        <tableAttr name="md"        type="ca_omci_uint16_t"/>
+        <tableAttr name="ma"        type="ca_omci_uint16_t"/>
+        <tableAttr name="mepId"     type="ca_omci_uint16_t"/>
+        <tableAttr name="macAddr"   type="ca_omci_uint8_t" size="OMCI_MAC_ADDR_LEN"/>
+    </table>
+    <table tableName="ca_omci_cfg_err_list_t">
+        <tableAttr name="vlanId"     type="ca_omci_uint16_t"/>
+        <tableAttr name="portId"     type="ca_omci_uint16_t"/>
+        <tableAttr name="detcCfgErr" type="ca_omci_uint8_t"/>
+    </table>
+</me>
+<me mename="dot1ag_chas_info"     meDescr="dot1agChasInfo"    classid="306"   multipkt="0" action="get,set">
+  <attr attrName="chas_id_len"         attrDescr="chasIdLen"        attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="chas_id_subtype"     attrDescr="chasIdSubType"    attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="chas_id_1"           attrDescr="chasId1"          attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="OMCI_CHASSIS_ID_LEN"/>
+  <attr attrName="chas_id_2"           attrDescr="chasId2"          attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="OMCI_CHASSIS_ID_LEN"/>
+  <attr attrName="mng_addr_domain_len" attrDescr="mngAddrDomainLen" attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="mng_addr_domain_1"   attrDescr="mngAddrDomain1"   attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="OMCI_MNG_DOMAIN_LEN"/>
+  <attr attrName="mng_addr_domain_2"   attrDescr="mngAddrDomain2"   attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="OMCI_MNG_DOMAIN_LEN"/>
+  <attr attrName="mng_addr_len"        attrDescr="mngAddrLen"       attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="mng_addr_1"          attrDescr="mngAddr1"         attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="OMCI_MNG_ADDR_LEN"/>
+  <attr attrName="mng_addr_2"          attrDescr="mngAddr2"         attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="OMCI_MNG_ADDR_LEN"/>
+</me>
+<me mename="oct_str"              meDescr="octStr"            classid="307"   multipkt="0" action="create,delete,get,set">
+  <attr attrName="length"  attrDescr="length" attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="part_1"  attrDescr="part1"  attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="OMCI_OCT_STR_PART_LEN"/>
+  <attr attrName="part_2"  attrDescr="part2"  attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="OMCI_OCT_STR_PART_LEN"/>
+  <attr attrName="part_3"  attrDescr="part3"  attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="OMCI_OCT_STR_PART_LEN"/>
+  <attr attrName="part_4"  attrDescr="part4"  attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="OMCI_OCT_STR_PART_LEN"/>
+  <attr attrName="part_5"  attrDescr="part5"  attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="OMCI_OCT_STR_PART_LEN"/>
+  <attr attrName="part_6"  attrDescr="part6"  attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="OMCI_OCT_STR_PART_LEN"/>
+  <attr attrName="part_7"  attrDescr="part7"  attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="OMCI_OCT_STR_PART_LEN"/>
+  <attr attrName="part_8"  attrDescr="part8"  attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="OMCI_OCT_STR_PART_LEN"/>
+  <attr attrName="part_9"  attrDescr="part9"  attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="OMCI_OCT_STR_PART_LEN"/>
+  <attr attrName="part_10" attrDescr="part10" attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="OMCI_OCT_STR_PART_LEN"/>
+  <attr attrName="part_11" attrDescr="part11" attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="OMCI_OCT_STR_PART_LEN"/>
+  <attr attrName="part_12" attrDescr="part12" attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="OMCI_OCT_STR_PART_LEN"/>
+  <attr attrName="part_13" attrDescr="part13" attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="OMCI_OCT_STR_PART_LEN"/>
+  <attr attrName="part_14" attrDescr="part14" attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="OMCI_OCT_STR_PART_LEN"/>
+  <attr attrName="part_15" attrDescr="part15" attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="OMCI_OCT_STR_PART_LEN"/>
+</me>
+<me mename="gen_pur_buff"         meDescr="genPurBuff"        classid="308"   multipkt="0" action="create,delete,get,Getnext,unMibUpload">
+  <attr attrName="max_size"   attrDescr="maxSize"   attrAction="RWS" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="buff_table" attrDescr="buffTable" attrAction="RVT" attrDataType="ca_omci_uint8_t"  attrSize="1024"/>
+</me>
+<me mename="multicast_oper_prof"  meDescr="multiOperProf"     classid="309"   multipkt="0" action="create,delete,get,Getnext,set,tableSet,alarmReport">
+  <attr attrName="igmp_ver"            attrDescr="igmpVer"             attrAction="RWS" attrDataType="ca_omci_uint8_t"    attrSize="0"/>
+  <attr attrName="igmp_func"           attrDescr="igmpFunc"            attrAction="RWS" attrDataType="ca_omci_uint8_t"    attrSize="0"/>
+  <attr attrName="immedi_leave"        attrDescr="immediLeave"         attrAction="RWS" attrDataType="ca_omci_uint8_t"    attrSize="0"/>
+  <attr attrName="us_tci"              attrDescr="usTci"               attrAction="RWS" attrDataType="ca_omci_uint16_t"   attrSize="0"/>
+  <attr attrName="us_tag_ctl"          attrDescr="usTagCtl"            attrAction="RWS" attrDataType="ca_omci_uint8_t"    attrSize="0"/>
+  <attr attrName="us_rate"             attrDescr="usRate"              attrAction="RWS" attrDataType="ca_omci_uint32_t"   attrSize="0"/>
+  <attr attrName="dynamic_tbl"         attrDescr="dynamicTbl"          attrAction="RWT" attrDataType="ca_omci_acl_tbl_t"  attrSize="OMCI_IGMP_MAX_TBL_NUM"/>
+  <attr attrName="static_tbl"          attrDescr="staticTbl"           attrAction="RWT" attrDataType="ca_omci_acl_tbl_t"  attrSize="OMCI_IGMP_MAX_TBL_NUM"/>
+  <attr attrName="lost_tbl"            attrDescr="lostTbl"             attrAction="RT"  attrDataType="ca_omci_lost_tbl_t" attrSize="OMCI_IGMP_LOST_TBL_NUM"/>
+  <attr attrName="robust"              attrDescr="robust"              attrAction="RWS" attrDataType="ca_omci_uint8_t"    attrSize="0"/>
+  <attr attrName="query_ip_addr"       attrDescr="queryIpAddr"         attrAction="RWS" attrDataType="ca_omci_uint32_t"   attrSize="0"/>
+  <attr attrName="query_interval"      attrDescr="queryItv"            attrAction="RWS" attrDataType="ca_omci_uint32_t"   attrSize="0"/>
+  <attr attrName="query_max_rsp_time"  attrDescr="queryMaxRspT"        attrAction="RWS" attrDataType="ca_omci_uint32_t"   attrSize="0"/>
+  <attr attrName="last_mb_query_itv"   attrDescr="lastMbQueryItv"      attrAction="RW"  attrDataType="ca_omci_uint32_t"   attrSize="0"/>
+  <attr attrName="unauth_join_req_beh" attrDescr="unauthJoinReqBehave" attrAction="RW"  attrDataType="ca_omci_uint8_t"    attrSize="0"/>
+  <attr attrName="ds_tci"              attrDescr="dsTci"               attrAction="RWS" attrDataType="ca_omci_ds_tci_t"   attrSize="0"/>
+    <enum enumName="igmp">
+        <element name="v1"      value="1"/>
+        <element name="v2"      value="2"/>
+        <element name="v3"      value="3"/>
+        <element name="mld_v1"  value="16"/>
+        <element name="mld_v2"  value="17"/>
+    </enum>
+    <enum enumName="us_tag_ctl">
+        <element name="transparent"  value="0"/>
+        <element name="add_tci"      value="1"/>
+        <element name="replace_tci"  value="2"/>
+        <element name="replace_vid"  value="3"/>
+    </enum>
+    <table tableName="ca_omci_acl_ctl_t">
+      <tableAttr name="condition" type="#ifdef CA_LITTLE_ENDIAN"/>
+        <tableAttr name="rowKey:10"   type="ca_omci_uint16_t"/>
+        <tableAttr name="test:1"      type="ca_omci_uint16_t"/>
+        <tableAttr name="rowPartId:3" type="ca_omci_uint16_t"/>
+        <tableAttr name="setCtl:2"    type="ca_omci_uint16_t"/>
+      <tableAttr name="condition" type="#else"/>
+        <tableAttr name="setCtl:2"    type="ca_omci_uint16_t"/>
+        <tableAttr name="rowPartId:3" type="ca_omci_uint16_t"/>
+        <tableAttr name="test:1"      type="ca_omci_uint16_t"/>
+        <tableAttr name="rowKey:10"   type="ca_omci_uint16_t"/>
+      <tableAttr name="condition" type="#endif"/>
+    </table>
+    <table tableName="ca_omci_acl_tbl_info_t">
+        <tableAttr name="tblCtl"        type="ca_omci_uint16_t"/>
+      <tableAttr name="condition" type="    union"/>
+      <tableAttr name="condition" type="    {"/>
+      <tableAttr name="condition" type="        struct"/>
+      <tableAttr name="condition" type="        {"/>
+        <tableAttr name="gemId"         type="ca_omci_uint16_t"/>
+        <tableAttr name="aniVlan"       type="ca_omci_uint16_t"/>
+        <tableAttr name="srcIp"         type="ca_omci_uint32_t"/>
+        <tableAttr name="dstIpRangeSt"  type="ca_omci_uint32_t"/>
+        <tableAttr name="dstIpRangeEnd" type="ca_omci_uint32_t"/>
+        <tableAttr name="imGroupBw"     type="ca_omci_uint32_t"/>
+        <tableAttr name="reserved"      type="ca_omci_uint16_t"/>
+      <tableAttr name="condition" type="        }row_part_0;"/>
+      <tableAttr name="condition" type="        struct"/>
+      <tableAttr name="condition" type="        {"/>
+        <tableAttr name="srcIpv6AddrLeadByte" type="ca_omci_uint8_t" size="OMCI_IPV6_LEAD_LEN"/>
+        <tableAttr name="previewLen"          type="ca_omci_uint16_t"/>
+        <tableAttr name="previewRpTime"       type="ca_omci_uint16_t"/>
+        <tableAttr name="previewRpCnt"        type="ca_omci_uint16_t"/>
+        <tableAttr name="previewResetTime"    type="ca_omci_uint16_t"/>
+        <tableAttr name="reserved"            type="ca_omci_uint16_t"/>
+      <tableAttr name="condition" type="        }row_part_1;"/>
+      <tableAttr name="condition" type="        struct"/>
+      <tableAttr name="condition" type="        {"/>
+        <tableAttr name="dstIpv6AddrLeadByte" type="ca_omci_uint8_t" size="OMCI_IPV6_LEAD_LEN"/>
+        <tableAttr name="reserved"            type="ca_omci_uint8_t" size="10"/>
+      <tableAttr name="condition" type="        }row_part_2;"/>
+      <tableAttr name="condition" type="    }u;"/>
+    </table>
+    <table tableName="ca_omci_acl_tbl_t">
+        <tableAttr name="tblCtlData" desc="tbl_ctl_data" type="ca_omci_uint8_t" size="24"/>
+    </table>
+    <table tableName="ca_omci_lost_tbl_t">
+        <tableAttr name="vlanId"     desc="vlan_id"      type="ca_omci_uint16_t"/>
+        <tableAttr name="srcIpAddr"  desc="src_ip_addr"  type="ca_omci_uint32_t"/>
+        <tableAttr name="dstMultiIp" desc="dst_multi_ip" type="ca_omci_uint32_t"/>
+    </table>
+    <table tableName="ca_omci_ds_tci_t">
+        <tableAttr name="ctl" desc="ctl"  type="ca_omci_uint8_t"/>
+        <tableAttr name="tci" desc="tci"  type="ca_omci_uint16_t"/>
+    </table>
+</me>
+<me mename="multi_sub_cfg_info"   meDescr="multiSubCfgInfo"   classid="310"   multipkt="0" action="create,delete,get,Getnext,set,tableSet">
+  <attr attrName="me_type"               attrDescr="meType"             attrAction="RWS" attrDataType="ca_omci_uint8_t"                attrSize="0"/>
+  <attr attrName="multi_oper_prof_point" attrDescr="multiOperProfPoint" attrAction="RWS" attrDataType="ca_omci_uint16_t"               attrSize="0"/>
+  <attr attrName="max_simu_group"        attrDescr="maxSimuGroup"       attrAction="RWS" attrDataType="ca_omci_uint16_t"               attrSize="0"/>
+  <attr attrName="max_multi_bw"          attrDescr="maxMultiBw"         attrAction="RWS" attrDataType="ca_omci_uint32_t"               attrSize="0"/>
+  <attr attrName="bw_enforce"            attrDescr="beEnforce"          attrAction="RWS" attrDataType="ca_omci_uint8_t"                attrSize="0"/>
+  <attr attrName="multi_srv_pkg_tbl"     attrDescr="multiSrvPkgTbl"     attrAction="RWT" attrDataType="ca_omci_multi_srv_pkg_tbl_t"    attrSize="10"/>
+  <attr attrName="allow_prev_group_tbl"  attrDescr="allowPrevGroupTbl"  attrAction="RWT" attrDataType="ca_omci_allow_prev_group_tbl_t" attrSize="10"/>
+    <enum enumName="me_type">
+        <element name="mac_port" value="0"/>
+        <element name="8021p"    value="1"/>
+    </enum>
+    <table tableName="ca_omci_srv_pkg_ctl_t">
+      <tableAttr name="condition" type="#ifdef CA_LITTLE_ENDIAN"/>
+        <tableAttr name="rowKey:10" type="ca_omci_uint16_t"/>
+        <tableAttr name="rsv:4"     type="ca_omci_uint16_t"/>
+        <tableAttr name="option:2"  type="ca_omci_uint16_t"/>
+      <tableAttr name="condition" type="#else"/>
+        <tableAttr name="option:2"   type="ca_omci_uint16_t"/>
+        <tableAttr name="rsv:4"      type="ca_omci_uint16_t"/>
+        <tableAttr name="rowKey:10"  type="ca_omci_uint16_t"/>
+      <tableAttr name="condition" type="#endif"/>
+    </table>
+    <table tableName="ca_omci_multi_srv_pkg_tbl_t">
+        <tableAttr name="tblCtl"             desc="tbl_ctl"          type="ca_omci_uint16_t"/>
+        <tableAttr name="vlanId"             desc="vlan_id"          type="ca_omci_uint16_t"/>
+        <tableAttr name="maxSimuGroup"       desc="max_group"        type="ca_omci_uint16_t"/>
+        <tableAttr name="maxMultiBw"         desc="max_bw"           type="ca_omci_uint32_t"/>
+        <tableAttr name="multiOperProfPoint" desc="multi_oper_point" type="ca_omci_uint16_t"/>
+        <tableAttr name="rvc"                desc="rvc"              type="ca_omci_uint8_t" size="8"/>
+    </table>
+    <table tableName="ca_omci_prev_group_ctl_t">
+      <tableAttr name="condition" type="#ifdef CA_LITTLE_ENDIAN"/>
+        <tableAttr name="rowKey:10"  type="ca_omci_uint16_t"/>
+        <tableAttr name="rsv:1"      type="ca_omci_uint16_t"/>
+        <tableAttr name="rowPart:3"  type="ca_omci_uint16_t"/>
+        <tableAttr name="setCtl:2"   type="ca_omci_uint16_t"/>
+      <tableAttr name="condition" type="#else"/>
+        <tableAttr name="setCtl:2"   type="ca_omci_uint16_t"/>
+        <tableAttr name="rowPart:3"  type="ca_omci_uint16_t"/>
+        <tableAttr name="rsv:1"      type="ca_omci_uint16_t"/>
+        <tableAttr name="rowKey:10"  type="ca_omci_uint16_t"/>
+      <tableAttr name="condition" type="#endif"/>
+    </table>
+    <table tableName="ca_omci_allow_prev_group_info_t">
+        <tableAttr name="tblCtl"    type="ca_omci_uint16_t"/>
+      <tableAttr name="condition" type="    union"/>
+      <tableAttr name="condition" type="    {"/>
+      <tableAttr name="condition" type="        struct"/>
+      <tableAttr name="condition" type="        {"/>
+        <tableAttr name="srcIpAddr" type="ca_omci_uint8_t" size="OMCI_MULTI_IP_ADDR_LEN"/>
+        <tableAttr name="aniVlan"   type="ca_omci_uint16_t"/>
+        <tableAttr name="uniVlan"   type="ca_omci_uint16_t"/>
+      <tableAttr name="condition" type="        }row_part_0;"/>
+      <tableAttr name="condition" type="        struct"/>
+      <tableAttr name="condition" type="        {"/>
+        <tableAttr name="dstIpAddr" type="ca_omci_uint8_t" size="OMCI_MULTI_IP_ADDR_LEN"/>
+        <tableAttr name="duration"  type="ca_omci_uint16_t"/>
+        <tableAttr name="timeLeft"  type="ca_omci_uint16_t"/>
+      <tableAttr name="condition" type="        }row_part_1;"/>
+      <tableAttr name="condition" type="    }u;"/>
+    </table>
+    <table tableName="ca_omci_allow_prev_group_tbl_t">
+        <tableAttr name="tblData" desc="tbl_data" type="ca_omci_uint8_t" size="22"/>
+    </table>
+</me>
+<me mename="multi_sub_moni"       meDescr="multiSubMoni"      classid="311"   multipkt="0" action="create,delete,get,Getnext,set">
+  <attr attrName="me_type"            attrDescr="meType"             attrAction="RWS" attrDataType="ca_omci_uint8_t"              attrSize="0"/>
+  <attr attrName="curr_multi_bw"      attrDescr="currMultiBw"        attrAction="R"   attrDataType="ca_omci_uint32_t"             attrSize="0"/>
+  <attr attrName="join_msg_cnt"       attrDescr="joinMsgCnt"         attrAction="R"   attrDataType="ca_omci_uint32_t"             attrSize="0"/>
+  <attr attrName="bw_excee_cnt"       attrDescr="bwExceeCnt"         attrAction="R"   attrDataType="ca_omci_uint32_t"             attrSize="0"/>
+  <attr attrName="ipv4_act_group_tbl" attrDescr="ipv4ActiveGroupTbl" attrAction="RT"  attrDataType="ca_omci_ipv4_act_group_tbl_t" attrSize="10"/>
+  <attr attrName="ipv6_act_group_tbl" attrDescr="ipv6ActiveGroupTbl" attrAction="RT"  attrDataType="ca_omci_ipv6_act_group_tbl_t" attrSize="10"/>
+    <enum enumName="me_type">
+        <element name="mac_port" value="0"/>
+        <element name="8021p"    value="1"/>
+    </enum>
+    <table tableName="ca_omci_ipv4_act_group_tbl_t">
+        <tableAttr name="vlanId"      desc="vlan_id"      type="ca_omci_uint16_t"/>
+        <tableAttr name="srcIpAddr"   desc="src_ip_addr"  type="ca_omci_uint32_t"/>
+        <tableAttr name="multiDstIp"  desc="multi_dst_ip" type="ca_omci_uint32_t"/>
+        <tableAttr name="besEffActBw" desc="best_bw"      type="ca_omci_uint32_t"/>
+        <tableAttr name="clientIp"    desc="client_ip"    type="ca_omci_uint32_t"/>
+        <tableAttr name="lastJoinT"   desc="last_joint_t" type="ca_omci_uint32_t"/>
+        <tableAttr name="rsv"         desc="rev"          type="ca_omci_uint16_t"/>
+    </table>
+    <table tableName="ca_omci_ipv6_act_group_tbl_t">
+        <tableAttr name="vlanId"      desc="vlan_id"      type="ca_omci_uint16_t"/>
+        <tableAttr name="srcIpAddr"   desc="src_ip_addr"  type="ca_omci_uint8_t" size="OMCI_MULTI_IP_ADDR_LEN"/>
+        <tableAttr name="multiDstIp"  desc="multi_dst_ip" type="ca_omci_uint8_t" size="OMCI_MULTI_IP_ADDR_LEN"/>
+        <tableAttr name="besEffActBw" desc="best_bw"      type="ca_omci_uint32_t"/>
+        <tableAttr name="clientIp"    desc="client_ip"    type="ca_omci_uint8_t" size="OMCI_MULTI_IP_ADDR_LEN"/>
+        <tableAttr name="lastJoinT"   desc="last_joint_t" type="ca_omci_uint32_t"/>
+    </table>
+</me>
+<me mename="fec_pm"               meDescr="fecPm"             classid="312"   multipkt="0" action="create,delete,get,set,GetCurrData">
+  <attr attrName="interval_end_time"  attrDescr="intervalEndT"   attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="thres_id"           attrDescr="thresId"        attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="corr_byte"          attrDescr="corrByte"       attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="corr_code_word"     attrDescr="corrCodeWord"   attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="uncorr_code_word"   attrDescr="uncorrCodeWord" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="total_code_word"    attrDescr="totalCodeWord"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="fec_seconds"        attrDescr="fecSeconds"     attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+</me>
+<me mename="file_trans_ctl"       meDescr="fileTransCtl"      classid="318"   multipkt="0" action="get,set">
+  <attr attrName="sup_trans_prot"        attrDescr="supTransProt"       attrAction="R"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="file_type"             attrDescr="fileType"           attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="file_instance"         attrDescr="fileInstance"       attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="local_file_name_point" attrDescr="localFileNamePoint" attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="net_addr_point"        attrDescr="netAddrPoint"       attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="file_trans_trigger"    attrDescr="fileTransTrigger"   attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="file_trans_st"         attrDescr="fileTransSt"        attrAction="RV" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="gem_iwtp_point"        attrDescr="gemIwtpPoint"       attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="vlan"                  attrDescr="vlan"               attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="file_size"             attrDescr="fileSize"           attrAction="RW" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="direc_list_table"      attrDescr="direcListTbl"       attrAction="RV" attrDataType="ca_omci_uint8_t"  attrSize="256"/>
+    <enum enumName="trans_prot">
+        <element name="ftp"      value="0x0001"/>
+        <element name="tftp"     value="0x0002"/>
+        <element name="sftp"     value="0x0004"/>
+        <element name="https"    value="0x0008"/>
+        <element name="flute"    value="0x0010"/>
+        <element name="dsmcc"    value="0x0020"/>
+    </enum>
+    <enum enumName="trans">
+        <element name="init_dl2onu" value="1"/>
+        <element name="init_ulfonu" value="2"/>
+        <element name="abort_curr"  value="3"/>
+        <element name="del_file"    value="4"/>
+        <element name="perform_dir" value="5"/>
+    </enum>
+    <enum enumName="st">
+        <element name="complete"    value="1"/>
+        <element name="abort"       value="2"/>
+        <element name="delete"      value="3"/>
+        <element name="url_undef"   value="4"/>
+        <element name="fail_auth"   value="5"/>
+        <element name="remote_fail" value="6"/>
+        <element name="local_fail"  value="7"/>
+    </enum>
+</me>
+<me mename="eth_frm_pm_ds"        meDescr="ethFrmPmDs"        classid="321"   multipkt="0" action="create,delete,get,set,GetCurrData">
+  <attr attrName="interval_end_time" attrDescr="intervalEndT"   attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="ctl_block"         attrDescr="ctlBlock"       attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="OMCI_CTL_BLOCK_LEN"/>
+  <attr attrName="drop_event"        attrDescr="dropEvent"      attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="octets"            attrDescr="octets"         attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="frames"            attrDescr="frames"         attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="broadcast_frame"   attrDescr="broadcastFrame" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="muticast_frame"    attrDescr="muticastFrame"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="crc_err_frame"     attrDescr="crcErrFrame"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="undersize_frame"   attrDescr="undersizeFrame" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="oversize_frame"    attrDescr="oversizeFrame"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="frame_oct_64"      attrDescr="frameOct64"     attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="frame_oct_127"     attrDescr="frameOct127"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="frame_oct_255"     attrDescr="frameOct255"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="frame_oct_511"     attrDescr="frameOct511"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="frame_oct_1023"    attrDescr="frameOct1023"   attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="frame_oct_1518"    attrDescr="frameOct1518"   attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+</me>
+<me mename="eth_frm_pm_us"        meDescr="ethFrmPmUs"        classid="322"   multipkt="0" action="create,delete,get,set,GetCurrData">
+  <attr attrName="interval_end_time" attrDescr="intervalEndT"    attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="thres_id"          attrDescr="thresId"         attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="drop_event"        attrDescr="dropEvent"       attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="octets"            attrDescr="octets"          attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="packets"           attrDescr="packets"         attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="broadcast_packet"  attrDescr="broadcastPacket" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="muticast_packet"   attrDescr="muticastPacket"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="crc_err_packet"    attrDescr="crcErrPacket"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="undersize_packet"  attrDescr="undersizePacket" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="oversize_packet"   attrDescr="oversizePacket"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="packet_oct_64"     attrDescr="packetOct64"     attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="packet_oct_127"    attrDescr="packetOct127"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="packet_oct_255"    attrDescr="packetOct255"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="packet_oct_511"    attrDescr="packetOct511"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="packet_oct_1023"   attrDescr="packetOct1023"   attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="packet_oct_1518"   attrDescr="packetOct1518"   attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+</me>
+<me mename="veip"                 meDescr="veip"              classid="329"   multipkt="1" action="get,set,alarmReport">
+  <attr attrName="admin"            attrDescr="admin"           attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="oper_state"       attrDescr="operState"       attrAction="RV" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="interdomain_name" attrDescr="interdomainName" attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="25"/>
+  <attr attrName="tcp_udp_pointer"  attrDescr="tcpUdpPointer"   attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="iana_assign_port" attrDescr="ianaAssignPort"  attrAction="R"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+</me>
+<me mename="gen_st_portal"        meDescr="genStPortal"       classid="330"   multipkt="0" action="create,delete,get,Getnext">
+  <attr attrName="status_doc_tbl"  attrDescr="statusDocTbl"  attrAction="RVT" attrDataType="ca_omci_uint8_t" attrSize="1024"/>
+  <attr attrName="cfg_doc_tbl"     attrDescr="cfgDocTbl"     attrAction="RVT" attrDataType="ca_omci_uint8_t" attrSize="1024"/>
+  <attr attrName="avc_report_rate" attrDescr="avcReportRate" attrAction="RWS" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+</me>
+<me mename="enhance_sec_ctl"      meDescr="enhanceSecCtl"     classid="332"   multipkt="1" action="get,set,Getnext">
+  <attr attrName="olt_crypto_cap"      attrDescr="oltCryptoCap"     attrAction="W"   attrDataType="ca_omci_uint8_t"  attrSize="16"/>
+  <attr attrName="olt_ram_chall_table" attrDescr="oltRamChallTable" attrAction="RWT" attrDataType="ca_omci_olt_sec_tbl_t"  attrSize="10"/>
+  <attr attrName="olt_chall_st"        attrDescr="oltChallSt"       attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="onu_sel_cry_cap"     attrDescr="onuSelCryCap"     attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="onu_ram_chall_table" attrDescr="onuRamChallTable" attrAction="RVT" attrDataType="ca_omci_onu_sec_tbl_t"  attrSize="10"/>
+  <attr attrName="onu_auth_rsl_table"  attrDescr="onuAuthRslTable"  attrAction="RVT" attrDataType="ca_omci_onu_sec_tbl_t"  attrSize="10"/>
+  <attr attrName="olt_auth_rsl_table"  attrDescr="oltAuthRslTable"  attrAction="WT"  attrDataType="ca_omci_olt_sec_tbl_t"  attrSize="10"/>
+  <attr attrName="olt_rsl_st"          attrDescr="oltRslSt"         attrAction="RW"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="onu_auth_st"         attrDescr="onuAuthSt"        attrAction="RV"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="master_sess_key"     attrDescr="masterSessKey"    attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="16"/>
+  <attr attrName="broadcast_key"       attrDescr="broadcastKey"     attrAction="RWT" attrDataType="ca_omci_sec_key_tbl_t"  attrSize="10"/>
+  <attr attrName="effec_ket_len"       attrDescr="effecKetLen"      attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+    <table tableName="ca_omci_olt_sec_tbl_t">
+        <tableAttr name="rowNum"  desc="row_num" type="ca_omci_uint8_t"/>
+        <tableAttr name="content" desc="content" type="ca_omci_uint8_t" size="16"/>
+    </table>
+    <table tableName="ca_omci_onu_sec_tbl_t">
+        <tableAttr name="content" desc="content" type="ca_omci_uint8_t" size="16"/>
+    </table>
+    <table tableName="ca_omci_sec_key_tbl_t">
+        <tableAttr name="rowCtl"  desc="row_ctl"  type="ca_omci_uint8_t"/>
+        <tableAttr name="rowId"   desc="row_id"   type="ca_omci_uint8_t"/>
+        <tableAttr name="keyFrag" desc="key_frag" type="ca_omci_uint8_t" size="16"/>
+    </table>
+</me>
+<me mename="eth_frame_pm"         meDescr="ethFramePm"        classid="334"   multipkt="0" action="create,delete,get,set,GetCurrData">
+  <attr attrName="interval_end_time" attrDescr="intervalEndT"   attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="ctl_block"         attrDescr="ctlBlock"       attrAction="RWS" attrDataType="ca_omci_uint8_t"  attrSize="OMCI_CTL_BLOCK_LEN"/>
+  <attr attrName="drop_event"        attrDescr="dropEvent"      attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="octets"            attrDescr="octets"         attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="frames"            attrDescr="frames"         attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="broadcast_frame"   attrDescr="broadcastFrame" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="muticast_frame"    attrDescr="muticastFrame"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="crc_err_frame"     attrDescr="crcErrFrame"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="undersize_frame"   attrDescr="undersizeFrame" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="oversize_frame"    attrDescr="oversizeFrame"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="frame_oct_64"      attrDescr="frameOct64"     attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="frame_oct_127"     attrDescr="frameOct127"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="frame_oct_255"     attrDescr="frameOct255"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="frame_oct_511"     attrDescr="frameOct511"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="frame_oct_1023"    attrDescr="frameOct1023"   attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="frame_oct_1518"    attrDescr="frameOct1518"   attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+</me>
+<me mename="snmp_cfg"             meDescr="snmpCfg"           classid="335"   multipkt="0" action="create,delete,get,set">
+  <attr attrName="snmp_ver"        attrDescr="snmpVer"       attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="snmp_agt_addr"   attrDescr="snmpAgtAddr"   attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="snmp_srv_addr"   attrDescr="snmpSrvAddr"   attrAction="RWS" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="snmp_srv_port"   attrDescr="snmpSrvPort"   attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="snmp_name_point" attrDescr="snmpNamePoint" attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="comm_for_read"   attrDescr="commForRead"   attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="comm_for_write"  attrDescr="commForWrite"  attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="sys_name_point"  attrDescr="sysNamePoint"  attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+</me>
+<me mename="dyn_power_ctl"        meDescr="dynPowerCtl"       classid="336"   multipkt="0" action="get,set">
+  <attr attrName="power_redu_mng_cap"     attrDescr="powerReduMngCap"     attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="power_redu_mng_mode"    attrDescr="powerReduMngMode"    attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="itransinit"             attrDescr="itransinit"          attrAction="R"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="itxinit"                attrDescr="itxinit"             attrAction="R"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="max_sleep_interval"     attrDescr="maxSleepInterval"    attrAction="RW" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="max_rx_off_interval"    attrDescr="maxRxOffInterval"    attrAction="RW" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="min_aware_interval"     attrDescr="minAwareInterval"    attrAction="RW" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="min_act_held_interval"  attrDescr="minActHeldInterval"  attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="max_sleep_interval_ext" attrDescr="maxSleepIntervalExt" attrAction="RW" attrDataType="ca_omci_uint32_t" attrSize="2"/>
+  <attr attrName="epon_cap_ext"           attrDescr="eponCapExt"          attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="epon_setup_ext"         attrDescr="eponSetupExt"        attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="miss_cons_burst_thr"    attrDescr="missConsBurstThr"    attrAction="RW" attrDataType="ca_omci_uint32_t" attrSize="0"/>
+</me>
+<me mename="bbrtr69_mng_srv"      meDescr="bbrtr69MngSrv"     classid="340"   multipkt="0" action="get,set">
+  <attr attrName="admin"        attrDescr="admin"      attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="acs_net_addr" attrDescr="acsNetAddr" attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="assoc_tag"    attrDescr="assocTag"   attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+</me>
+<me mename="gpn_ctp_pm"           meDescr="gpnCtpPm"          classid="341"   multipkt="0" action="create,delete,get,set,GetCurrData">
+  <attr attrName="interval_end_time" attrDescr="intervalEndT"  attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="thres_id"          attrDescr="thresId"       attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="tx_gem_frame"      attrDescr="txGemFrame"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_gem_frame"      attrDescr="rxGemFrame"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_payload_byte"   attrDescr="rxPayloadByte" attrAction="R"   attrDataType="ca_omci_uint64_t" attrSize="0"/>
+  <attr attrName="tx_payload_byte"   attrDescr="txPayloadByte" attrAction="R"   attrDataType="ca_omci_uint64_t" attrSize="0"/>
+  <attr attrName="encrypt_key_err"   attrDescr="encryptKeyErr" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+</me>
+<me mename="tcp_udp_pm"           meDescr="tcpUdpPm"          classid="342"   multipkt="0" action="create,delete,get,set,GetCurrData">
+  <attr attrName="interval_end_time" attrDescr="intervalEndT" attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="thres_id"          attrDescr="thresId"      attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="socket_fail"       attrDescr="socketFail"   attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="listen_fail"       attrDescr="listenFail"   attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="bind_fail"         attrDescr="bindFail"     attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="accept_fail"       attrDescr="acceptFail"   attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="select_fail"       attrDescr="selectFail"   attrAction="R"   attrDataType="ca_omci_uint16_t" attrSize="0"/>
+</me>
+<me mename="ener_consu_pm"        meDescr="enerConsuPm"       classid="343"   multipkt="0" action="create,delete,get,set,GetCurrData">
+  <attr attrName="interval_end_time"   attrDescr="intervalEndT"   attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="thres_id"            attrDescr="thresId"        attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="doze_time"           attrDescr="dozeTime"       attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="cyclic_sleep_time"   attrDescr="cyclicSleepT"   attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="watchful_sleep_time" attrDescr="watchfulSlT"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="energy_consumed"     attrDescr="energyConsumed" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+</me>
+<me mename="xgpon_tc_pm"          meDescr="xgponTcPm"         classid="344"   multipkt="0" action="create,delete,get,set,GetCurrData">
+  <attr attrName="interval_end_time"   attrDescr="intervalEndT"    attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="thres_id"            attrDescr="thresId"         attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="psbd_hec_err_cnt"    attrDescr="psbdHecErrCnt"   attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="xgtc_hec_err_cnt"    attrDescr="xgtcHecErrCnt"   attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="unknown_prof_cnt"    attrDescr="unknownProfCnt"  attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="tx_xgem_frame"       attrDescr="txXgemFrame"     attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="fragment_xgem_frame" attrDescr="fragXgemFrame"   attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="xgem_hec_lost_words" attrDescr="xgemHecLostWord" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="xgem_key_err"        attrDescr="xgemKeyErr"      attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="xgem_hec_err"        attrDescr="xgemHecErr"      attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+</me>
+<me mename="xgpon_ds_mng_pm"      meDescr="xgponDsMngPm"      classid="345"   multipkt="0" action="create,delete,get,set,GetCurrData">
+  <attr attrName="interval_end_time"      attrDescr="intervalEndT"       attrAction="R"   attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="thres_id"               attrDescr="thresId"            attrAction="RWS" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="ploam_mic_err"          attrDescr="ploamMicErr"        attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="ds_ploam_msg"           attrDescr="dsPloamMsg"         attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_prof_msg"            attrDescr="rxProfMsg"          attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_ranging_time_msg"    attrDescr="rxRangingTMsg"      attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_deactive_onu_id_msg" attrDescr="rxDeactiveOnuIdMsg" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_disable_sn_msg"      attrDescr="rxDisableSnMsg"     attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_req_reg_msg"         attrDescr="rxReqRegMsg"        attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_assign_alloc_id_msg" attrDescr="rxAssignAllocIdMsg" attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_key_ctl_msg"         attrDescr="rxKeyCtlMsg"        attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_sleep_allow_msg"     attrDescr="rxSleepAllowMsg"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_base_omci_msg_cnt"   attrDescr="rxBaseOmciMsgCnt"   attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_ext_omci_msg_cnt"    attrDescr="rxExtOmciMsgCnt"    attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="rx_assign_onu_id_msg"   attrDescr="rxAssignOnuIdMsg"   attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="omci_mic_err"           attrDescr="omciMicErr"         attrAction="R"   attrDataType="ca_omci_uint32_t" attrSize="0"/>
+</me>
+<me mename="ipv6_host"            meDescr="ipv6host"          classid="347"   multipkt="0" action="get,Getnext,set,test">
+  <attr attrName="ip_option"              attrDescr="ipOption"           attrAction="RW"   attrDataType="ca_omci_uint8_t"          attrSize="0"/>
+  <attr attrName="mac_addr"               attrDescr="macAddr"            attrAction="R"    attrDataType="ca_omci_uint8_t"          attrSize="OMCI_MAC_ADDR_LEN"/>
+  <attr attrName="onu_id"                 attrDescr="onuId"              attrAction="RW"   attrDataType="ca_omci_uint8_t"          attrSize="OMCI_ONU_ID_LEN"/>
+  <attr attrName="ipv6_link_local_addr"   attrDescr="ipv6LinkLocalAddr"  attrAction="R"    attrDataType="ca_omci_uint8_t"          attrSize="OMCI_IPV6_ADDR_LEN"/>
+  <attr attrName="ipv6_addr"              attrDescr="ipv6Addr"           attrAction="RW"   attrDataType="ca_omci_uint8_t"          attrSize="OMCI_IPV6_ADDR_LEN"/>
+  <attr attrName="def_router"             attrDescr="defRouter"          attrAction="RW"   attrDataType="ca_omci_uint8_t"          attrSize="OMCI_IPV6_ADDR_LEN"/>
+  <attr attrName="pri_dns"                attrDescr="priDns"             attrAction="RW"   attrDataType="ca_omci_uint8_t"          attrSize="OMCI_IPV6_ADDR_LEN"/>
+  <attr attrName="snd_dns"                attrDescr="sndDns"             attrAction="RW"   attrDataType="ca_omci_uint8_t"          attrSize="OMCI_IPV6_ADDR_LEN"/>
+  <attr attrName="curr_addr_table"        attrDescr="currAddrTable"      attrAction="RVT"  attrDataType="ca_omci_ipv6_addr_tbl_t"  attrSize="10"/>
+  <attr attrName="curr_def_router_table"  attrDescr="currDefRouterTable" attrAction="RVT"  attrDataType="ca_omci_ipv6_tbl_t"       attrSize="10"/>
+  <attr attrName="curr_dns_table"         attrDescr="currDnsTable"       attrAction="RVT"  attrDataType="ca_omci_ipv6_tbl_t"       attrSize="10"/>
+  <attr attrName="duid"                   attrDescr="duid"               attrAction="R"    attrDataType="ca_omci_uint8_t"          attrSize="25"/>
+  <attr attrName="on_link_prefix"         attrDescr="onLinkPrefix"       attrAction="RW"   attrDataType="ca_omci_onlink_prefix_t"  attrSize="0"/>
+  <attr attrName="curr_on_link_pre_table" attrDescr="currOnLinkPreTable" attrAction="RWVT" attrDataType="ca_omci_curr_prefix_t"    attrSize="10"/>
+  <attr attrName="relay_agent_option"     attrDescr="relayAgentOption"   attrAction="RW"   attrDataType="ca_omci_uint16_t"         attrSize="0"/>
+    <table tableName="ca_omci_ipv6_addr_tbl_t">
+        <tableAttr name="ipAddr"           desc="ip_addr"             type="ca_omci_uint8_t" size="OMCI_IPV6_ADDR_LEN"/>
+        <tableAttr name="preLifetRemain"   desc="pre_life_t_remain"   type="ca_omci_uint32_t"/>
+        <tableAttr name="validLifetRemain" desc="valid_life_t_remain" type="ca_omci_uint32_t"/>
+    </table>
+    <table tableName="ca_omci_ipv6_tbl_t">
+        <tableAttr name="ipAddr"  desc="ip_addr" type="ca_omci_uint8_t" size="OMCI_IPV6_ADDR_LEN"/>
+    </table>
+    <table tableName="ca_omci_onlink_prefix_t">
+        <tableAttr name="length"  desc="length" type="ca_omci_uint8_t"/>
+        <tableAttr name="prefix"  desc="prefix" type="ca_omci_uint8_t" size="OMCI_IPV6_ADDR_LEN"/>
+    </table>
+    <table tableName="ca_omci_curr_prefix_t">
+        <tableAttr name="length"           desc="length"              type="ca_omci_uint8_t"/>
+        <tableAttr name="flag"             desc="flag"                type="ca_omci_uint8_t"/>
+        <tableAttr name="prefix"           desc="prefix"              type="ca_omci_uint8_t" size="OMCI_IPV6_ADDR_LEN"/>
+        <tableAttr name="preLifetRemain"   desc="pre_life_t_remain"   type="ca_omci_uint32_t"/>
+        <tableAttr name="validLifetRemain" desc="valid_life_t_remain" type="ca_omci_uint32_t"/>
+    </table>
+</me>
+<me mename="brv6_pre_assi"        meDescr="brv6PreAssi"       classid="348"   multipkt="0" action="get,set">
+  <attr attrName="icmpv6_err_msg_process"  attrDescr="icmpv6ErrMsgProcess"  attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="icmpv6_info_msg_process" attrDescr="icmpv6InfoMsgProcess" attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="route_solic_process"     attrDescr="routeSolicProcess"    attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="route_adver_process"     attrDescr="routeAdverProcess"    attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="nb_solic_process"        attrDescr="nbSolicProcess"       attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="nb_adver_process"        attrDescr="nbAdverProcess"       attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="redirect_process"        attrDescr="redirectProcess"      attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="mc_lsn_query_process"    attrDescr="mcLsnQueryProcess"    attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+  <attr attrName="unknown_icmpv6_process"  attrDescr="unknownIcmpv6Process" attrAction="RW" attrDataType="ca_omci_uint8_t" attrSize="0"/>
+</me>
+<me mename="onu3_g"               meDescr="onu3G"             classid="441"   multipkt="0" action="get,set,alarmReport">
+  <attr attrName="flash_mem_pm_val"     attrDescr="flashMemPmVal"     attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="last_reset_reason"    attrDescr="lastResetReason"   attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="st_snapshot_total"    attrDescr="stSnapshotTotal"   attrAction="R"  attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="st_snapshot_valid"    attrDescr="stSnapshotValid"   attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="next_st_snapshot_idx" attrDescr="nextStSnapshotIdx" attrAction="RW" attrDataType="ca_omci_uint16_t" attrSize="0"/>
+  <attr attrName="st_snapshot_rc_tbl"   attrDescr="stSnapshotRcTbl"   attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="25"/>
+  <attr attrName="snap_action"          attrDescr="snapAction"        attrAction="W"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="st_snapshot_recent"   attrDescr="stSnapshotRecent"  attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="25"/>
+  <attr attrName="reset_action"         attrDescr="resetAction"       attrAction="W"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+    <enum enumName="restart_reason">
+      <element name="unspecified"       value="0x00"/>
+      <element name="sw_init"           value="0x01"/>
+      <element name="hw_init"           value="0x02"/>
+      <element name="selfmoni_timeout"  value="0x03"/>
+      <element name="hw_err"            value="0x04"/>
+      <element name="hw_restart"        value="0x05"/>
+      <element name="over_temp"         value="0x06"/>
+      <element name="sw_out_of_mem"     value="0x07"/>
+      <element name="sw_restart"        value="0x08"/>
+    </enum>
+</me>
+<me mename="alcl_ont_genv2"       meDescr="alclOntGenV2"      classid="65296" multipkt="0" action="get,set">
+  <attr attrName="igmp_snoop_enable"        attrDescr="igmpSnoopEnable"      attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="force_data_stor_cmd"      attrDescr="forceDataStorCmd"     attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="time_last_data_stor_oper" attrDescr="timeLastDataStorOper" attrAction="R"  attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="craft_admin_indi"         attrDescr="craftAdminIndi"       attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="eth_ptp_enable_indi"      attrDescr="ethPtpEnableIndi"     attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="st_mcast_vlan_trans_indi" attrDescr="stMcastVlanTransIndi" attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="alu_me_cap_bitmap"        attrDescr="aluMeCapBitmap"       attrAction="R"  attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="flex_pq_cap"              attrDescr="flexPqCap"            attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="slid_cap"                 attrDescr="slid_cap"             attrAction="RW" attrDataType="ca_omci_uint8_t"  attrSize="0"/>
+  <attr attrName="yp_sn"                    attrDescr="ypSn"                 attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="12"/>
+  <attr attrName="alu_spe_bhv_field"        attrDescr="aluSpeBhvField"       attrAction="R"  attrDataType="ca_omci_uint32_t" attrSize="0"/>
+  <attr attrName="alu_me_cap_bitmap_p2"     attrDescr="aluMeCapBitmapP2"     attrAction="R"  attrDataType="ca_omci_uint8_t"  attrSize="25"/>
+    <enum enumName="igmp_snoop_enable">
+        <element name="ipoe"  value="0x01"/>
+        <element name="pppoe" value="0x02"/>
+    </enum>
+    <enum enumName="craft">
+        <element name="enable"  value="0x00"/>
+        <element name="disable" value="0x01"/>
+    </enum>
+    <enum enumName="indicator">
+        <element name="disable" value="0x00"/>
+        <element name="enable"  value="0x01"/>
+    </enum>
+    <enum enumName="slid">
+        <element name="disable"    value="0x00"/>
+        <element name="slid_on"    value="0x01"/>
+        <element name="enable_all" value="0x02"/>
+    </enum>
+</me>
+<me mename="alcl_ds_tag_oper1"    meDescr="alclDsTagOper1"    classid="65305" multipkt="0" action="get,set">
+  <attr attrName="uni_def_behavior"     attrDescr="uniDefBehavior"    attrAction="RW"  attrDataType="ca_omci_uint8_t"             attrSize="0"/>
+  <attr attrName="uni_def_behavior_tbl" attrDescr="uniDefBehaviorTbl" attrAction="RWT" attrDataType="ca_omci_vlan_tag_oper_tbl_t" attrSize="20"/>
+    <enum enumName="behavior_type">
+        <element name="rm_outer_tag" value="1"/>
+        <element name="pass_tag"     value="2"/>
+        <element name="pri_tag"      value="3"/>
+    </enum>
+    <enum enumName="action">
+        <element name="remove" value="0"/>
+        <element name="add"    value="1"/>
+    </enum>
+    <table tableName="ca_omci_vlan_tag_oper_tbl_t">
+        <tableAttr name="entryNum" desc="entry_num" type="ca_omci_uint8_t"/>
+        <tableAttr name="vlanAct"  desc="vlan_act"  type="ca_omci_uint8_t"/>
+        <tableAttr name="vid"      desc="vid"       type="ca_omci_uint16_t"/>
+        <tableAttr name="reserved" desc="reserved"  type="ca_omci_uint16_t"/>
+    </table>
+</me>
+</Root>
